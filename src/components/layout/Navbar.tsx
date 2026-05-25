@@ -89,41 +89,38 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
 
 
         {/* Mobile Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-brand-navy/80 hover:text-brand-navy p-2 outline-none"
+            className="text-brand-navy/80 hover:text-brand-orange p-2.5 rounded-lg border border-slate-100 hover:border-slate-200 bg-white shadow-sm transition-all duration-200 outline-none cursor-pointer flex items-center justify-center"
             aria-label="Toggle navigation menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer - Premium Floating Rounded B2B Card */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden glass-nav border-t border-brand-navy/10 absolute top-full left-0 right-0 overflow-hidden shadow-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden absolute top-full left-6 right-6 mt-2 rounded-xl bg-white border border-slate-200 shadow-xl overflow-hidden z-50"
           >
-            <div className="px-6 py-6 flex flex-col gap-5 bg-white">
+            <div className="px-6 py-6 flex flex-col gap-4 bg-white">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleScrollTo(e, item.href)}
-                  className="text-sm font-bold text-brand-navy/80 hover:text-brand-orange uppercase tracking-wider pl-2"
+                  className="text-sm font-bold text-brand-navy/80 hover:text-brand-orange uppercase tracking-wider pl-2 py-1 transition-colors duration-150"
                 >
                   {item.name}
                 </a>
               ))}
-              <hr className="border-brand-navy/5 my-2" />
-
-
             </div>
           </motion.div>
         )}
