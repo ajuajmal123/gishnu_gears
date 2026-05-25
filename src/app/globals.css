@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Pure white background */
+  --foreground: #0d1b2a; /* Deep steel navy corporate typography */
+  --brand-orange: #e8520a; /* Vibrant industrial copper accent */
+  --brand-navy: #0d1b2a; /* Steel Navy */
+  --brand-navy-light: #1b263b; /* Medium slate */
+  
+  --font-sora: "Sora", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-light: var(--brand-navy-light);
+  
+  --color-bg-light: #f8f9fa; /* Soft B2B light-gray background */
+  --color-border-slate: #e2e8f0; /* Crisp borders */
+  
+  --font-sora: var(--font-sora);
+  --font-inter: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global resets & typography */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
 }
 
 body {
-  background: var(--background);
+  font-family: var(--font-inter), sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Reusable B2B Clean Card Style */
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-card:hover {
+  border-color: #e8520a;
+  box-shadow: 0 4px 12px rgba(13, 27, 42, 0.08);
+}
+
+/* Translucent clean B2B header */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e8520a;
 }
