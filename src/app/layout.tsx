@@ -29,6 +29,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${sora.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full bg-background text-foreground selection:bg-brand-orange selection:text-white flex flex-col font-sans">
         {children}

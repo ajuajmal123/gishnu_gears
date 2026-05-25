@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 
@@ -13,6 +14,8 @@ interface NavbarProps {
 export default function Navbar({ onBackToPortal }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,9 +40,17 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (pathname === "/products") {
+      if (href === "#products") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        router.push("/" + href);
+      }
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
