@@ -3,6 +3,7 @@
 import React from "react";
 import Button from "../ui/Button";
 import { Globe, Award, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -12,21 +13,15 @@ export default function Hero() {
         {/* Left Copy Column */}
         <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
           
-          {/* Engineering Indicator badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-xs text-brand-navy font-semibold tracking-wider uppercase shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-brand-orange" />
-            <span>Precision Gearbox Manufacturing</span>
-          </div>
-
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sora font-extrabold tracking-tight text-brand-navy leading-[1.1] max-w-4xl">
             Engineering Motion <br />
             <span className="gradient-text-orange font-black">With Precision</span>
           </h1>
 
-          {/* Description - Wix exact copy */}
+          {/* Description - Shortened Catchy 10-Word brand statement */}
           <p className="text-brand-navy/70 text-lg md:text-xl font-normal leading-relaxed max-w-2xl font-sans font-medium">
-            Custom-engineered gearboxes for industrial, automotive, and aquaculture sectors — serving India and global markets.
+            Custom-engineered high-precision gearboxes designed for global industrial, automotive, and aquaculture sectors.
           </p>
 
           {/* CTA Buttons */}
@@ -69,33 +64,67 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Graphic Column - Highly Simplified & Clean B2B Graphic */}
-        <div className="lg:col-span-5 relative flex items-center justify-center">
-          <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] flex items-center justify-center rounded-2xl bg-slate-50 border border-slate-200 p-8 shadow-sm">
-            {/* Simple Elegant Vector Gear Assembly */}
-            <svg viewBox="0 0 100 100" className="w-full h-full text-brand-navy" fill="none">
-              <circle cx="50" cy="50" r="32" stroke="#e2e8f0" strokeWidth="4" />
-              <circle cx="50" cy="50" r="20" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="3 3" />
-              <circle cx="50" cy="50" r="8" fill="#cbd5e1" />
-              
-              {/* Clean vector gear teeth */}
-              {Array.from({ length: 8 }).map((_, idx) => {
-                const angle = idx * 45;
-                return (
-                  <path
-                    key={idx}
-                    d="M 50 10 L 46 18 L 54 18 Z"
-                    fill="#e8520a"
-                    transform={`rotate(${angle} 50 50)`}
-                  />
-                );
-              })}
-            </svg>
+        {/* Right Graphic Column - Bold Asymmetric Product Collage */}
+        <div className="lg:col-span-5 relative h-[380px] sm:h-[450px] w-full flex items-center justify-center mt-10 lg:mt-0">
+          {/* Decorative background soft glow */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-brand-navy/5 rounded-3xl blur-2xl -z-10 pointer-events-none" />
 
-            <div className="absolute bottom-4 right-4 text-[9px] font-mono text-brand-navy/35 select-none font-bold">
-              GISHNU GEARS // UNIT.01
+          {/* Underlayer Shadow Base */}
+          <div className="absolute w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] rounded-2xl bg-slate-100 border border-slate-200/50 shadow-inner -z-10" />
+
+          {/* Picture 1: Standard Gearbox (Central High Impact Card) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.03, zIndex: 30 }}
+            className="absolute z-20 w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xl cursor-pointer"
+          >
+            <img
+              src="/standard_gearbox.png"
+              alt="Gishnu Standard Gearbox"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
+              Standard Series
             </div>
-          </div>
+          </motion.div>
+
+          {/* Picture 2: Custom Gearbox (Bottom Right Shuffled Card) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 20, y: 30 }}
+            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            whileHover={{ scale: 1.03, zIndex: 30 }}
+            className="absolute z-10 bottom-4 right-4 sm:bottom-8 sm:right-8 w-[140px] h-[140px] sm:w-[170px] sm:h-[170px] rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-lg cursor-pointer transform translate-x-4 translate-y-4"
+          >
+            <img
+              src="/custom_gearbox.png"
+              alt="Gishnu Custom Gearbox"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
+              Custom-Built
+            </div>
+          </motion.div>
+
+          {/* Picture 3: Precision Gears (Top Left Shuffled Card) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: -20, y: -30 }}
+            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            whileHover={{ scale: 1.03, zIndex: 30 }}
+            className="absolute z-10 top-4 left-4 sm:top-8 sm:left-8 w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-lg cursor-pointer transform -translate-x-4 -translate-y-4"
+          >
+            <img
+              src="/precision_gears.png"
+              alt="Gishnu Precision Gears"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
+              Precision Space
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

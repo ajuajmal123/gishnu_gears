@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, Cpu, X, ArrowRight, Construction } from "lucide-react";
+import { Settings, Cpu, Shield, X, ArrowRight, Construction } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 
@@ -30,6 +30,58 @@ export default function Home() {
     window.scrollTo({ top: 0 });
   };
 
+  const portals = [
+    {
+      id: "standard",
+      title: "Standard Gearboxes",
+      description: "High-end industrial transmission units engineered for maximum power.",
+      image: "/standard_gearbox.png",
+      icon: <Settings className="w-5 h-5" />,
+      action: () => {
+        setActivePortal("gearboxes");
+        window.scrollTo({ top: 0 });
+        setTimeout(() => {
+          const el = document.querySelector("#products");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      },
+      badge: "Enter Division",
+      color: "hover:border-brand-orange",
+      iconColor: "text-brand-orange"
+    },
+    {
+      id: "custom",
+      title: "Customized Gearboxes",
+      description: "Bespoke multi-stage high-torque drives engineered to your exact specifications.",
+      image: "/custom_gearbox.png",
+      icon: <Cpu className="w-5 h-5" />,
+      action: () => {
+        setActivePortal("gearboxes");
+        window.scrollTo({ top: 0 });
+        setTimeout(() => {
+          const el = document.querySelector("#products");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      },
+      badge: "Enter Division",
+      color: "hover:border-brand-orange",
+      iconColor: "text-brand-orange"
+    },
+    {
+      id: "precision",
+      title: "Precision Gears & Components",
+      description: "Aerospace and defence grade gears manufactured to micron-tolerances.",
+      image: "/precision_gears.png",
+      icon: <Shield className="w-5 h-5" />,
+      action: () => {
+        setShowUnderConstruction(true);
+      },
+      badge: "Under Construction",
+      color: "hover:border-brand-navy-light",
+      iconColor: "text-brand-navy-light"
+    }
+  ];
+
   return (
     <main className="relative min-h-screen bg-white overflow-x-hidden w-full font-sans select-none">
       
@@ -42,95 +94,74 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-white flex flex-col items-center justify-between py-20 px-6 overflow-hidden"
+            className="fixed inset-0 z-40 bg-white overflow-y-auto w-full"
           >
-            {/* Top Logo Area */}
-            <motion.div
-              initial={{ y: -15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative z-10 flex flex-col items-center gap-1"
-            >
-              <Logo className="h-16 md:h-20" showSubtitle={true} />
-            </motion.div>
-
-            {/* Central Portal Cards - Simplified B2B Cards */}
-            <div className="relative z-10 w-full max-w-4xl grid sm:grid-cols-2 gap-8 my-auto">
-              
-              {/* Option 1: Gearboxes */}
+            {/* Main Portal Content Area */}
+            <div className="flex flex-col items-center justify-between min-h-[90vh] py-16 px-6 max-w-7xl mx-auto w-full">
+              {/* Top Logo Area */}
               <motion.div
-                initial={{ x: -30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                whileHover={{ y: -4 }}
-                onClick={handleEnterGearboxes}
-                className="glass-card rounded-xl p-8 cursor-pointer relative group border border-slate-200 hover:border-brand-orange bg-white shadow-sm hover:shadow-md transition-all duration-200 text-left flex flex-col justify-between h-[260px]"
+                initial={{ y: -15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative z-10 flex flex-col items-center gap-1 mt-4"
               >
-                <div className="flex justify-between items-start">
-                  <div className="p-3 rounded-lg bg-bg-light border border-slate-100 text-brand-orange shadow-sm">
-                    <Settings className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <h3 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-orange transition-colors duration-200">
-                    Gearboxes
-                  </h3>
-                  <p className="text-brand-navy/60 text-sm mt-2 leading-relaxed font-sans font-medium">
-                    Explore our standard and custom industrial gearboxes designed for aquaculture, steering, and heavy B2B manufacturing.
-                  </p>
-                </div>
-
-                <div className="w-full flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                  <span className="text-[10px] font-semibold text-brand-orange uppercase pl-1 flex items-center gap-1">
-                    Enter Portal <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
+                <Logo className="h-16 md:h-20" showSubtitle={true} />
               </motion.div>
 
-              {/* Option 2: Precision Gears */}
-              <motion.div
-                initial={{ x: 30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                whileHover={{ y: -4 }}
-                onClick={() => setShowUnderConstruction(true)}
-                className="glass-card rounded-xl p-8 cursor-pointer relative group border border-slate-200 hover:border-brand-navy-light bg-white shadow-sm hover:shadow-md transition-all duration-200 text-left flex flex-col justify-between h-[260px]"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="p-3 rounded-lg bg-bg-light border border-slate-100 text-brand-navy-light shadow-sm">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                </div>
+              {/* Central Portal Cards - Redesigned 3-Column Layout with Premium Images */}
+              <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 my-auto py-8">
+                {portals.map((portal, index) => (
+                  <motion.div
+                    key={portal.id}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.15 * (index + 1) }}
+                    whileHover={{ y: -6 }}
+                    onClick={portal.action}
+                    className={`glass-card rounded-2xl cursor-pointer relative group border border-slate-200 ${portal.color} bg-white shadow-md hover:shadow-xl transition-all duration-300 text-left flex flex-col overflow-hidden h-[380px]`}
+                  >
+                    {/* Card Image Area with Zoom effect */}
+                    <div className="relative w-full h-60 overflow-hidden bg-slate-50 border-b border-slate-100 flex items-center justify-center">
+                      <img
+                        src={portal.image}
+                        alt={portal.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      
+                      {/* Dark gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent group-hover:from-black/60 transition-all duration-300" />
+                      
+                      {/* Premium floating icon badge */}
+                      <div className={`absolute top-4 right-4 p-2.5 rounded-xl bg-white/95 backdrop-blur-sm border border-slate-100/50 ${portal.iconColor} shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                        {portal.icon}
+                      </div>
 
-                <div className="mt-6">
-                  <h3 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-navy-light transition-colors duration-200">
-                    Precision Gears
-                  </h3>
-                  <p className="text-brand-navy/60 text-sm mt-2 leading-relaxed font-sans font-medium">
-                    High-tolerance spur, helical, ground, and planet carrier components engineered for aerospace, defence, and space applications.
-                  </p>
-                </div>
+                      {/* Mini overlay badge on bottom left of image */}
+                      <span className="absolute bottom-3 left-4 text-[10px] font-bold text-white uppercase tracking-wider bg-brand-navy/60 backdrop-blur-sm px-2 py-0.5 rounded-md">
+                        {portal.badge}
+                      </span>
+                    </div>
 
-                <div className="w-full flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                  <span className="text-[10px] font-semibold text-brand-navy/80 uppercase pl-1 flex items-center gap-1">
-                    Under Construction <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </motion.div>
-
+                    {/* Content Area */}
+                    <div className="p-6 flex flex-col justify-center flex-grow">
+                      <h3 className="text-lg sm:text-xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-orange transition-colors duration-200">
+                        {portal.title}
+                      </h3>
+                      <p className="text-brand-navy/60 text-xs sm:text-sm mt-2 leading-relaxed font-sans font-medium">
+                        {portal.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            {/* Bottom Footer Credits */}
-            <motion.div
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative z-10 flex flex-col items-center gap-2 text-brand-navy/35 text-[10px] font-mono tracking-widest uppercase font-bold"
-            >
-              <span>Gishnu Gears Redesign Concept</span>
-              <span>© {new Date().getFullYear()} // ALL RIGHTS RESERVED</span>
-            </motion.div>
+            {/* Premium Full-Bleed Corporate Footer */}
+            <Footer
+              onBackToPortal={handleBackToPortal}
+              activePortal={activePortal}
+              onEnterGearboxes={() => setActivePortal("gearboxes")}
+            />
 
             {/* Under Construction Modal */}
             <AnimatePresence>
@@ -206,7 +237,11 @@ export default function Home() {
           <Contact />
 
           {/* Footer */}
-          <Footer onBackToPortal={handleBackToPortal} />
+          <Footer
+            onBackToPortal={handleBackToPortal}
+            activePortal={activePortal}
+            onEnterGearboxes={() => setActivePortal("gearboxes")}
+          />
         </motion.div>
       )}
 

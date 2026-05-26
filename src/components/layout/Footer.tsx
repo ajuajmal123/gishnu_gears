@@ -3,12 +3,18 @@
 import React from "react";
 import Logo from "../ui/Logo";
 import { ArrowUp } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface FooterProps {
   onBackToPortal: () => void;
+  activePortal?: "portal" | "gearboxes";
+  onEnterGearboxes?: () => void;
 }
 
-export default function Footer({ onBackToPortal }: FooterProps) {
+export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes }: FooterProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -21,24 +27,42 @@ export default function Footer({ onBackToPortal }: FooterProps) {
     { name: "Contact & Support", href: "#contact" },
   ];
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (pathname === "/products") {
+      router.push("/" + href);
+    } else if (activePortal === "portal") {
+      if (onEnterGearboxes) {
+        onEnterGearboxes();
+      }
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    } else {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="relative bg-slate-50 border-t border-slate-200 pt-20 pb-10 overflow-hidden text-brand-navy">
+    <footer className="relative bg-gradient-to-br from-slate-50 via-white to-slate-50/50 border-t border-slate-200 pt-20 pb-10 overflow-hidden text-brand-navy w-full">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
           {/* Brand Info */}
-          <div className="col-span-12 md:col-span-5 flex flex-col items-start gap-4 text-left">
+          <div className="col-span-12 md:col-span-7 flex flex-col items-start gap-4 text-left">
             <Logo className="h-12 sm:h-14" showSubtitle={false} />
             <span className="text-[10px] font-sans font-bold tracking-[0.55em] text-brand-navy/80 uppercase pl-3 mt-1 block">
               Transforming Innovation
             </span>
-            <p className="text-brand-navy/60 text-sm max-w-sm mt-4 leading-relaxed font-sans font-medium">
+            <p className="text-brand-navy/60 text-sm max-w-xl mt-4 leading-relaxed font-sans font-medium">
               Founded in 1995, Gishnu Gears is an ISO 9001:2015 certified custom gearbox manufacturer in India, supplying high-precision mechanical transmission systems to industrial, automotive, railway, and aquaculture sectors.
             </p>
             {/* Socials */}
             <div className="flex gap-4 mt-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange transition-all duration-200 shadow-sm"
+                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm"
                 aria-label="LinkedIn Profile"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -47,7 +71,7 @@ export default function Footer({ onBackToPortal }: FooterProps) {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange transition-all duration-200 shadow-sm"
+                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm"
                 aria-label="Twitter Profile"
               >
                 <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
@@ -56,7 +80,7 @@ export default function Footer({ onBackToPortal }: FooterProps) {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange transition-all duration-200 shadow-sm"
+                className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/60 hover:text-brand-orange hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm"
                 aria-label="YouTube Channel"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -67,7 +91,7 @@ export default function Footer({ onBackToPortal }: FooterProps) {
           </div>
 
           {/* Quick Links */}
-          <div className="col-span-6 md:col-span-3 text-left">
+          <div className="col-span-12 md:col-span-5 text-left md:pl-20">
             <h4 className="text-brand-navy font-sora font-semibold text-xs uppercase tracking-widest mb-6">
               Navigation
             </h4>
@@ -76,38 +100,13 @@ export default function Footer({ onBackToPortal }: FooterProps) {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.querySelector(link.href);
-                      if (el) el.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="text-brand-navy/60 hover:text-brand-orange text-sm transition-colors duration-200 font-sans"
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="text-brand-navy/60 hover:text-brand-orange text-sm transition-colors duration-200 font-sans block w-fit font-medium"
                   >
                     {link.name}
                   </a>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Industry Series */}
-          <div className="col-span-6 md:col-span-4 text-left">
-            <h4 className="text-brand-navy font-sora font-semibold text-xs uppercase tracking-widest mb-6">
-              Machinery Series
-            </h4>
-            <ul className="space-y-4 text-brand-navy/60 text-sm font-sans font-medium">
-              <li>
-                A SERIES: AQUACULTURE TRANSMISSIONS
-              </li>
-              <li>
-                B SERIES: BEVEL STEERING DRIVES
-              </li>
-              <li>
-                C SERIES: CUSTOM HELICAL GEARBOXES
-              </li>
-              <li>
-                DEFENCE & SPACE PRECISION GEARSET
-              </li>
             </ul>
           </div>
         </div>
@@ -122,22 +121,15 @@ export default function Footer({ onBackToPortal }: FooterProps) {
             <a href="#" className="hover:text-brand-orange transition-colors duration-200">
               TERMS OF USE
             </a>
-            <button
-              onClick={onBackToPortal}
-              className="hover:text-brand-orange text-brand-orange/60 font-bold transition-colors duration-200 uppercase cursor-pointer"
-            >
-              Portal Selection
-            </button>
+            {activePortal !== "portal" && (
+              <button
+                onClick={onBackToPortal}
+                className="hover:text-brand-orange text-brand-orange/60 font-bold transition-colors duration-200 uppercase cursor-pointer"
+              >
+                Portal Selection
+              </button>
+            )}
           </div>
-
-          {/* Scroll to Top */}
-          <button
-            onClick={handleScrollToTop}
-            className="w-10 h-10 rounded-lg bg-white border border-slate-200 hover:border-brand-orange flex items-center justify-center text-brand-navy/50 hover:text-brand-orange transition-all duration-200 shadow-sm cursor-pointer group"
-            aria-label="Scroll back to top of the page"
-          >
-            <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
         </div>
       </div>
     </footer>

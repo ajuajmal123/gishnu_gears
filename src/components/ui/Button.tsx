@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 interface ButtonProps extends HTMLMotionProps<"button"> {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "glass";
+  size?: "xs" | "sm" | "md" | "lg";
   showIcon?: boolean;
   className?: string;
 }
@@ -14,12 +15,20 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 export default function Button({
   children,
   variant = "primary",
+  size = "lg",
   showIcon = false,
   className = "",
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center font-sora font-semibold text-sm tracking-wide px-6 py-3 rounded-lg transition-all duration-200 select-none outline-none cursor-pointer border";
+    "relative inline-flex items-center justify-center font-sora font-semibold tracking-wide transition-all duration-200 select-none outline-none cursor-pointer border";
+
+  const sizeStyles = {
+    xs: "px-3 py-1 text-[10px] rounded-md",
+    sm: "px-4 py-1.5 text-xs rounded-md",
+    md: "px-5 py-2 text-sm rounded-lg",
+    lg: "px-6 py-3 text-sm rounded-lg",
+  };
 
   const variants = {
     primary:
@@ -34,7 +43,7 @@ export default function Button({
     <motion.button
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${variants[variant]} ${className}`}
       {...props}
     >
       <span className="relative z-10 flex items-center gap-2">
@@ -52,3 +61,4 @@ export default function Button({
     </motion.button>
   );
 }
+

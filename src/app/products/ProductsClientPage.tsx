@@ -349,7 +349,7 @@ export default function ProductsClientPage() {
                         ))}
                       </div>
 
-                      <Button variant="primary" onClick={handleInquiryClick} className="w-full text-[10px] py-1.5 px-3">
+                      <Button variant="primary" size="xs" onClick={handleInquiryClick} className="w-full">
                         Submit Technical Inquiry
                       </Button>
                     </div>
