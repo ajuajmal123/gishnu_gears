@@ -7,8 +7,7 @@
   --brand-navy: #0d1b2a; /* Steel Navy */
   --brand-navy-light: #1b263b; /* Medium slate */
   
-  --font-sora: "Sora", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --font-manrope: var(--font-manrope), "Manrope", sans-serif;
 }
 
 @theme {
@@ -22,8 +21,8 @@
   --color-bg-light: #f8f9fa; /* Soft B2B light-gray background */
   --color-border-slate: #e2e8f0; /* Crisp borders */
   
-  --font-sora: var(--font-sora);
-  --font-inter: var(--font-inter);
+  --font-sans: var(--font-manrope);
+  --font-sora: var(--font-manrope); /* Forward Sora heading hooks to Manrope font variable */
 }
 
 /* Global resets & typography */
@@ -33,7 +32,7 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
