@@ -14,6 +14,7 @@ interface SubProduct {
   specs: string[];
   description: string;
   illustration: React.ReactNode;
+  image?: string;
 }
 
 interface Category {
@@ -58,6 +59,7 @@ export default function ProductsClientPage() {
               <line x1="50" y1="25" x2="50" y2="65" strokeDasharray="2 2" />
             </svg>
           ),
+          image: "/standard_gearbox.png",
         },
         {
           id: "std-2",
@@ -71,6 +73,7 @@ export default function ProductsClientPage() {
               <line x1="50" y1="15" x2="50" y2="85" strokeDasharray="3 3" />
             </svg>
           ),
+          image: "/standard_gearbox.png",
         },
         {
           id: "std-3",
@@ -84,6 +87,7 @@ export default function ProductsClientPage() {
               <circle cx="60" cy="50" r="8" />
             </svg>
           ),
+          image: "/standard_gearbox.png",
         },
       ],
     },
@@ -105,6 +109,7 @@ export default function ProductsClientPage() {
               <circle cx="50" cy="50" r="6" />
             </svg>
           ),
+          image: "/custom_gearbox.png",
         },
         {
           id: "cst-2",
@@ -118,6 +123,7 @@ export default function ProductsClientPage() {
               <line x1="60" y1="30" x2="60" y2="70" />
             </svg>
           ),
+          image: "/custom_gearbox.png",
         },
       ],
     },
@@ -139,6 +145,7 @@ export default function ProductsClientPage() {
               <circle cx="62" cy="60" r="8" />
             </svg>
           ),
+          image: "/railway_gearbox.png",
         },
         {
           id: "rlw-2",
@@ -151,6 +158,7 @@ export default function ProductsClientPage() {
               <circle cx="50" cy="55" r="10" />
             </svg>
           ),
+          image: "/railway_gearbox.png",
         },
       ],
     },
@@ -170,6 +178,7 @@ export default function ProductsClientPage() {
               <path d="M 50 15 L 85 85 L 50 72 L 15 85 Z" />
             </svg>
           ),
+          image: "/defence_gearbox.png",
         },
         {
           id: "def-2",
@@ -186,6 +195,7 @@ export default function ProductsClientPage() {
               <circle cx="50" cy="68" r="4" />
             </svg>
           ),
+          image: "/defence_gearbox.png",
         },
       ],
     },
@@ -303,35 +313,43 @@ export default function ProductsClientPage() {
                 {activeCatData.subProducts.map((prod) => (
                   <div
                     key={prod.id}
-                    className="glass-card rounded-xl p-6 bg-white border border-slate-200 shadow-sm flex flex-col justify-between text-left hover:border-brand-orange/20 hover:shadow-md transition-all duration-200"
+                    className="glass-card rounded-xl p-4 sm:p-5 bg-white border border-slate-200 shadow-sm flex flex-col justify-between text-left hover:border-brand-orange/20 hover:shadow-md transition-all duration-200"
                   >
-                    {/* Schematic Illustration Header */}
-                    <div className="w-full h-36 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-5 shadow-sm">
-                      {prod.illustration}
+                    {/* Schematic / Product Image Header */}
+                    <div className="w-full h-28 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-3 shadow-inner overflow-hidden">
+                      {prod.image ? (
+                        <img
+                          src={prod.image}
+                          alt={prod.name}
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      ) : (
+                        prod.illustration
+                      )}
                     </div>
 
                     {/* Product Details & Specs */}
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
-                        <h4 className="text-base sm:text-lg font-sora font-extrabold text-brand-navy line-clamp-2">
+                        <h4 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy line-clamp-1">
                           {prod.name}
                         </h4>
-                        <p className="text-brand-navy/60 text-xs sm:text-sm mt-2 leading-relaxed font-sans font-medium line-clamp-3 min-h-[54px]">
+                        <p className="text-brand-navy/60 text-[11px] sm:text-xs mt-1.5 leading-snug font-sans font-medium line-clamp-2 min-h-[32px]">
                           {prod.description}
                         </p>
                       </div>
 
                       {/* Specification bullets */}
-                      <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-slate-100 mb-5">
+                      <div className="flex flex-col gap-1 mt-2.5 pt-2.5 border-t border-slate-100 mb-3.5">
                         {prod.specs.map((spec, sIdx) => (
-                          <div key={sIdx} className="flex items-center gap-1.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                            <ChevronRight className="w-3 h-3 text-brand-orange flex-shrink-0" />
+                          <div key={sIdx} className="flex items-center gap-1 text-[10px] sm:text-[11px] text-brand-navy/70 font-semibold font-sans">
+                            <ChevronRight className="w-2.5 h-2.5 text-brand-orange flex-shrink-0" />
                             <span className="line-clamp-1">{spec}</span>
                           </div>
                         ))}
                       </div>
 
-                      <Button variant="primary" onClick={handleInquiryClick} className="w-auto self-center text-[11px] py-2 px-4">
+                      <Button variant="primary" onClick={handleInquiryClick} className="w-full text-[10px] py-1.5 px-3">
                         Submit Technical Inquiry
                       </Button>
                     </div>
