@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, Cpu, Shield, Train, ChevronRight, ChevronDown, Calendar, Phone } from "lucide-react";
+import { Settings, Cpu, Shield, Train, ChevronRight, ChevronDown, Calendar, Phone, X } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
@@ -32,6 +32,7 @@ export default function ProductsClientPage() {
 
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<SubProduct | null>(null);
 
   useEffect(() => {
     const catParam = searchParams.get("category");
@@ -308,50 +309,42 @@ export default function ProductsClientPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
               >
                 {activeCatData.subProducts.map((prod) => (
                   <div
                     key={prod.id}
-                    className="glass-card rounded-xl p-4 sm:p-5 bg-white border border-slate-200 shadow-sm flex flex-col justify-between text-left hover:border-brand-orange/20 hover:shadow-md transition-all duration-200"
+                    onClick={() => setSelectedProduct(prod)}
+                    className="glass-card rounded-xl p-4 bg-white border border-slate-200 shadow-sm flex flex-col justify-between cursor-pointer hover:border-brand-orange/40 hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden h-[300px] text-left"
                   >
-                    {/* Schematic / Product Image Header */}
-                    <div className="w-full h-28 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-3 shadow-inner overflow-hidden">
+                    {/* Schematic / Product Image Header - grander optimized layout */}
+                    <div className="w-full h-44 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-3 shadow-inner overflow-hidden flex-shrink-0">
                       {prod.image ? (
                         <img
                           src={prod.image}
                           alt={prod.name}
-                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       ) : (
-                        prod.illustration
+                        <div className="transition-transform duration-500 group-hover:scale-110">
+                          {prod.illustration}
+                        </div>
                       )}
+                      
+                      {/* Premium hovering badge overlay */}
+                      <div className="absolute inset-0 bg-brand-navy/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                        <span className="text-[10px] sm:text-[11px] font-sora font-extrabold text-white bg-brand-orange px-3 py-1.5 rounded-lg shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1">
+                          View Details
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Product Details & Specs */}
-                    <div className="flex-grow flex flex-col justify-between">
-                      <div>
-                        <h4 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy line-clamp-1">
-                          {prod.name}
-                        </h4>
-                        <p className="text-brand-navy/60 text-[11px] sm:text-xs mt-1.5 leading-snug font-sans font-medium line-clamp-2 min-h-[32px]">
-                          {prod.description}
-                        </p>
-                      </div>
-
-                      {/* Specification bullets */}
-                      <div className="flex flex-col gap-1 mt-2.5 pt-2.5 border-t border-slate-100 mb-3.5">
-                        {prod.specs.map((spec, sIdx) => (
-                          <div key={sIdx} className="flex items-center gap-1 text-[10px] sm:text-[11px] text-brand-navy/70 font-semibold font-sans">
-                            <ChevronRight className="w-2.5 h-2.5 text-brand-orange flex-shrink-0" />
-                            <span className="line-clamp-1">{spec}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <Button variant="primary" size="xs" onClick={handleInquiryClick} className="w-full">
-                        Submit Technical Inquiry
-                      </Button>
+                    {/* Product Name only - centered in remaining space */}
+                    <div className="flex-grow flex items-center mt-1">
+                      <h4 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors duration-250 line-clamp-2 leading-tight">
+                        {prod.name}
+                      </h4>
                     </div>
                   </div>
                 ))}
@@ -360,6 +353,115 @@ export default function ProductsClientPage() {
           </div>
         </div>
       </div>
+
+      {/* Dynamic Product Detail Modal */}
+      <AnimatePresence>
+        {selectedProduct && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop click closer */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProduct(null)}
+              className="fixed inset-0 bg-brand-navy/40 backdrop-blur-md z-40"
+            />
+
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
+              className="relative w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-100 flex flex-col md:flex-row z-50 max-h-[90vh] md:max-h-[80vh] my-auto"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="absolute top-4 right-4 p-2 rounded-lg bg-white/95 border border-slate-200 text-brand-navy hover:text-brand-orange hover:border-brand-orange/30 shadow-sm transition-all duration-200 z-50 cursor-pointer"
+                aria-label="Close details"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Left Side: Image Showcase */}
+              <div className="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-100 relative min-h-[200px] md:min-h-full">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {selectedProduct.image ? (
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.name}
+                      className="max-h-[160px] md:max-h-[280px] w-full object-contain drop-shadow-md rounded-lg"
+                    />
+                  ) : (
+                    <div className="scale-125 md:scale-150">
+                      {selectedProduct.illustration}
+                    </div>
+                  )}
+                </div>
+
+                {/* Floating category badge inside modal */}
+                <div className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-white/95 border border-slate-200 flex items-center gap-1.5 shadow-sm">
+                  <span className="text-brand-orange">
+                    {activeCatData.icon}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-sora font-extrabold text-brand-navy">
+                    {activeCatData.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Side: Specifications & Description */}
+              <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto max-h-[50vh] md:max-h-full">
+                <div className="flex-grow">
+                  {/* Title Indicator */}
+                  <span className="text-[10px] font-mono font-bold text-brand-orange tracking-wider uppercase mb-1 block">
+                    Product Specifications
+                  </span>
+                  
+                  {/* Product Title */}
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-sora font-extrabold text-brand-navy leading-tight mb-3">
+                    {selectedProduct.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed font-sans font-medium mb-6">
+                    {selectedProduct.description}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="border-t border-slate-100 my-4" />
+
+                  {/* Tech Specs */}
+                  <h4 className="text-xs sm:text-sm font-sora font-extrabold text-brand-navy mb-3">
+                    Technical Specifications
+                  </h4>
+                  <div className="flex flex-col gap-2.5 mb-6">
+                    {selectedProduct.specs.map((spec, sIdx) => (
+                      <div key={sIdx} className="flex items-start gap-2 text-xs text-brand-navy/80 font-semibold font-sans bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                        <ChevronRight className="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5" />
+                        <span className="leading-snug">{spec}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technical Inquiry Button */}
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    setSelectedProduct(null);
+                    handleInquiryClick();
+                  }}
+                  className="w-full shadow-lg hover:shadow-brand-orange/20 mt-4"
+                >
+                  Submit Technical Inquiry
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Global Footer */}
       <Footer onBackToPortal={handleBackToPortal} />
