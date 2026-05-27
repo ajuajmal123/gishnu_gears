@@ -1,68 +1,128 @@
 "use client";
 
-import React from "react";
-import { Globe, Cpu } from "lucide-react";
+import React, { useState } from "react";
 
-export default function MapPlaceholder() {
+interface LocationData {
+  id: string;
+  name: string;
+  address: string;
+  rating: string;
+  reviews: string;
+  landmark?: string;
+  mapY: string; // vertical percentage position of the pin on mockup
+  mapX: string; // horizontal percentage position of the pin on mockup
+}
+
+const locations: LocationData[] = [
+  {
+    id: "gishnu",
+    name: "Gishnu Gears (P) Ltd",
+    address: "Door No.3, S.F.NO.796, Avinashi Rd, Neelambur, Coimbatore, Tamil Nadu 641062",
+    landmark: "Near Hotel Le Meridien, Cexus Nagar",
+    rating: "4.4",
+    reviews: "34",
+    mapY: "48%",
+    mapX: "48%"
+  },
+  {
+    id: "mmgears",
+    name: "M.M Gears Pvt Ltd",
+    address: "1/285, Mudalipalayam Rd, PO, Velayutham Nagar, Arasur, Tamil Nadu 641407",
+    landmark: "Coimbatore Industrial Sector",
+    rating: "4.0",
+    reviews: "12",
+    mapY: "42%",
+    mapX: "56%"
+  }
+];
+
+export default function MapPlaceholder({ className = "h-[400px]" }: { className?: string }) {
+  const [activeLoc, setActiveLoc] = useState<LocationData>(locations[0]);
+
   return (
-    <div className="relative glass-card w-full h-[400px] rounded-xl overflow-hidden flex flex-col justify-between bg-white border border-slate-200 shadow-sm">
-      {/* Corporate Label */}
-      <div className="absolute top-4 left-4 flex items-center gap-2 text-brand-navy/60 text-xs font-semibold tracking-wider">
-        <span>Gishnu Gears Manufacturing HQ</span>
+    <div className={`relative glass-card w-full rounded-xl overflow-hidden flex flex-col bg-white border border-slate-200 shadow-sm ${className}`}>
+      
+      {/* Real Styled Coimbatore Map Image Background */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <img
+          src="/coimbatore_map_route.png"
+          alt="Coimbatore Region Highway Map"
+          className="w-full h-full object-cover select-none"
+        />
+        {/* Subtle overlay for premium visual balance */}
+        <div className="absolute inset-0 bg-slate-900/5 backdrop-blur-[0.5px]" />
       </div>
 
-      <div className="absolute top-4 right-4 flex items-center gap-2 text-brand-navy/40 text-[10px] font-mono">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-        <span>SYS STATUS: OPERATIONAL</span>
+      {/* Sleek Switch for Locations */}
+      <div className="absolute top-4 left-4 z-20 flex bg-white/95 backdrop-blur-sm p-1 rounded-lg border border-slate-200 shadow-sm max-w-[calc(100%-40px)]">
+        {locations.map((loc) => (
+          <button
+            key={loc.id}
+            onClick={() => setActiveLoc(loc)}
+            className={`px-3 py-1.5 rounded-md text-[10px] font-sora font-extrabold transition-all duration-200 cursor-pointer ${
+              activeLoc.id === loc.id
+                ? "bg-brand-orange text-white shadow-sm"
+                : "text-brand-navy/70 hover:text-brand-orange"
+            }`}
+          >
+            {loc.id === "gishnu" ? "Gishnu Gears HQ" : "M.M Gears Facility"}
+          </button>
+        ))}
       </div>
 
-      {/* Simple Global Map SVG Vector Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <svg viewBox="0 0 800 400" className="w-full h-full opacity-[0.06]" fill="none">
-          <path
-            d="M 100 150 Q 150 120 200 160 T 300 140 T 400 160 T 500 120 T 600 180 T 700 150 M 120 250 Q 220 220 320 260 T 520 220 T 680 250"
-            stroke="rgba(13,27,42,0.5)"
-            strokeWidth="2"
-            strokeDasharray="4 4"
-          />
-        </svg>
-      </div>
+      {/* Location Pins */}
+      {locations.map((loc) => {
+        const isActive = activeLoc.id === loc.id;
+        return (
+          <div
+            key={loc.id}
+            onClick={() => setActiveLoc(loc)}
+            style={{ top: loc.mapY, left: loc.mapX }}
+            className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 cursor-pointer group"
+          >
+            {/* Animated Pin Ring */}
+            <div className={`relative flex items-center justify-center transition-all duration-300 ${isActive ? "scale-110" : "hover:scale-105"}`}>
+              {isActive && (
+                <span className="absolute inline-flex h-7 w-7 rounded-full bg-brand-orange/30 animate-ping" />
+              )}
+              <div className={`w-4.5 h-4.5 rounded-full border-[3px] border-white shadow-md transition-all duration-300 ${
+                isActive ? "bg-brand-orange" : "bg-brand-navy/40 group-hover:bg-brand-orange/60"
+              }`} />
+            </div>
+          </div>
+        );
+      })}
 
-      {/* Primary Headquarters Node */}
-      <div className="absolute top-[48%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
-        {/* Simple static indicator */}
-        <div className="w-4.5 h-4.5 rounded-full bg-brand-orange border-4 border-white shadow-md" />
-        
-        {/* Simple Label Card */}
-        <div className="mt-3 bg-white px-4 py-2.5 rounded-lg text-left shadow-md border border-slate-100 max-w-[220px]">
-          <p className="text-[10px] font-mono text-brand-orange font-bold uppercase tracking-wider">Manufacturing HQ</p>
-          <h4 className="text-brand-navy text-xs font-bold font-sora mt-0.5">Gishnu Gears India</h4>
-          <p className="text-[9px] text-brand-navy/60 leading-tight mt-1 font-sans">1,00,000 Sq Ft Facility, Coimbatore, Tamil Nadu</p>
+      {/* Active Pin Detail Card Card Overlay */}
+      <div className="absolute bottom-4 left-4 right-4 z-10 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200/60 max-w-[340px] text-left mx-auto sm:mx-0">
+        <div className="flex justify-between items-start gap-3">
+          <div>
+            <h4 className="text-brand-navy text-sm font-extrabold font-sora leading-tight">
+              {activeLoc.name}
+            </h4>
+          </div>
+          
+          {/* Rating Badge */}
+          <div className="flex items-center gap-1 bg-amber-500/5 border border-amber-500/20 px-2 py-0.5 rounded-lg text-amber-600 flex-shrink-0">
+            <span className="text-[10px] font-bold font-sora">{activeLoc.rating}</span>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" stroke="none">
+              <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
+            </svg>
+            <span className="text-[9px] text-brand-navy/50 font-bold">({activeLoc.reviews})</span>
+          </div>
         </div>
+
+        <p className="text-[11px] text-brand-navy/70 leading-relaxed mt-2 font-sans font-medium">
+          {activeLoc.address}
+        </p>
+        
+        {activeLoc.landmark && (
+          <p className="text-[10px] text-brand-navy/55 leading-snug mt-1.5 font-sans font-semibold italic">
+            * {activeLoc.landmark}
+          </p>
+        )}
       </div>
       
-      {/* Lower Coordinates Bar */}
-      <div className="relative z-10 w-full bg-slate-50 border-t border-slate-100 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
-        <div className="flex gap-6">
-          <div className="flex items-center gap-2">
-            <Globe className="w-4 h-4 text-brand-navy/50" />
-            <div className="text-left">
-              <span className="text-[8px] text-brand-navy/50 font-mono block">COORDINATES</span>
-              <span className="text-[10px] text-brand-navy font-mono font-bold tracking-wider">11.0168° N, 76.9558° E</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Cpu className="w-4 h-4 text-brand-navy/50" />
-            <div className="text-left">
-              <span className="text-[8px] text-brand-navy/50 font-mono block">MANUFACTURING AREA</span>
-              <span className="text-[10px] text-brand-navy font-mono font-bold tracking-wider">1,00,000 SQ. FT.</span>
-            </div>
-          </div>
-        </div>
-        <div className="text-[9px] font-mono text-brand-navy/40 tracking-widest text-right uppercase font-bold">
-          SECURE IP LINK // COIMBATORE SECTOR
-        </div>
-      </div>
     </div>
   );
 }

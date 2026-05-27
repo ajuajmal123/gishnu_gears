@@ -309,16 +309,16 @@ export default function ProductsClientPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {activeCatData.subProducts.map((prod) => (
                   <div
                     key={prod.id}
                     onClick={() => setSelectedProduct(prod)}
-                    className="glass-card rounded-xl p-4 bg-white border border-slate-200 shadow-sm flex flex-col justify-between cursor-pointer hover:border-brand-orange/40 hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden h-[300px] text-left"
+                    className="glass-card rounded-xl p-5 bg-white border border-slate-200 shadow-sm flex flex-col justify-between cursor-pointer hover:border-brand-orange/40 hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden h-[360px] text-left"
                   >
-                    {/* Schematic / Product Image Header - grander optimized layout */}
-                    <div className="w-full h-44 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-3 shadow-inner overflow-hidden flex-shrink-0">
+                    {/* Schematic / Product Image Header - scaled grander layout */}
+                    <div className="w-full h-56 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-3.5 shadow-inner overflow-hidden flex-shrink-0">
                       {prod.image ? (
                         <img
                           src={prod.image}
@@ -333,16 +333,16 @@ export default function ProductsClientPage() {
                       
                       {/* Premium hovering badge overlay */}
                       <div className="absolute inset-0 bg-brand-navy/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
-                        <span className="text-[10px] sm:text-[11px] font-sora font-extrabold text-white bg-brand-orange px-3 py-1.5 rounded-lg shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1">
+                        <span className="text-[11px] font-sora font-extrabold text-white bg-brand-orange px-3.5 py-2 rounded-lg shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1">
                           View Details
                           <ChevronRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
                     </div>
 
-                    {/* Product Name only - centered in remaining space */}
+                    {/* Product Name only - grander size centered in remaining space */}
                     <div className="flex-grow flex items-center mt-1">
-                      <h4 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors duration-250 line-clamp-2 leading-tight">
+                      <h4 className="text-sm sm:text-base md:text-lg font-sora font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors duration-250 line-clamp-2 leading-tight">
                         {prod.name}
                       </h4>
                     </div>
@@ -447,16 +447,19 @@ export default function ProductsClientPage() {
                 </div>
 
                 {/* Technical Inquiry Button */}
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    setSelectedProduct(null);
-                    handleInquiryClick();
-                  }}
-                  className="w-full shadow-lg hover:shadow-brand-orange/20 mt-4"
-                >
-                  Submit Technical Inquiry
-                </Button>
+                <div className="flex justify-center mt-4">
+                  <Button
+                    variant="primary"
+                    size="xs"
+                    onClick={() => {
+                      setSelectedProduct(null);
+                      handleInquiryClick();
+                    }}
+                    className="w-auto px-6 shadow-md hover:shadow-brand-orange/15"
+                  >
+                    Submit Technical Inquiry
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </div>
