@@ -22,7 +22,6 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
   const navLinks = [
     { name: "Products Showcase", href: "#products" },
     { name: "About Gishnu", href: "#about" },
-    { name: "Leadership", href: "#leadership" },
     { name: "Quality Standards", href: "#certifications" },
     { name: "Contact & Support", href: "#contact" },
   ];
@@ -32,16 +31,29 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
     if (pathname === "/products") {
       router.push("/" + href);
     } else if (activePortal === "portal") {
-      if (onEnterGearboxes) {
-        onEnterGearboxes();
-      }
-      setTimeout(() => {
+      if (href === "#products") {
+        if (onEnterGearboxes) {
+          onEnterGearboxes();
+        }
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      } else {
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 150);
+      }
     } else {
       const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        onBackToPortal();
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      }
     }
   };
 

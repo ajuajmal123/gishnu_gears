@@ -11,7 +11,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Products from "@/components/sections/Products";
 import About from "@/components/sections/About";
-import Leadership from "@/components/sections/Leadership";
 import Team from "@/components/sections/Team";
 import Certifications from "@/components/sections/Certifications";
 import Contact from "@/components/sections/Contact";
@@ -156,6 +155,15 @@ export default function Home() {
               </div>
             </div>
 
+            {/* About Gishnu Gears */}
+            <About />
+
+            {/* Quality Standards & Compliance */}
+            <Certifications />
+
+            {/* Contact Us */}
+            <Contact />
+
             {/* Premium Full-Bleed Corporate Footer */}
             <Footer
               onBackToPortal={handleBackToPortal}
@@ -231,10 +239,6 @@ export default function Home() {
           {/* Page Sections - Products is placed FIRST, followed by Team */}
           <Products />
           <Team />
-          <About />
-          <Leadership />
-          <Certifications />
-          <Contact />
 
           {/* Footer */}
           <Footer

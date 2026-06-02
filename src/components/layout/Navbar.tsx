@@ -32,7 +32,6 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
   const navItems = [
     { name: "Products", href: "#products" },
     { name: "About Us", href: "#about" },
-    { name: "Leadership", href: "#leadership" },
     { name: "Quality Standards", href: "#certifications" },
     { name: "Contact Us", href: "#contact" },
   ];
@@ -50,6 +49,12 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        onBackToPortal();
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
       }
     }
   };
