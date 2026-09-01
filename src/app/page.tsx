@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Settings, Cpu, Shield, X, ArrowRight, Construction } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 
 // Main Site Components
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Products from "@/components/sections/Products";
 import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
 import Certifications from "@/components/sections/Certifications";
@@ -18,6 +18,21 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
   const [activePortal, setActivePortal] = useState<"portal" | "gearboxes">("portal");
   const [showUnderConstruction, setShowUnderConstruction] = useState(false);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("portal") === "false" || window.location.hash) {
+      setActivePortal("gearboxes");
+      if (window.location.hash) {
+        setTimeout(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [searchParams]);
 
   const handleEnterGearboxes = () => {
     setActivePortal("gearboxes");
@@ -37,16 +52,11 @@ export default function Home() {
       image: "/standard_gearbox.png",
       icon: <Settings className="w-5 h-5" />,
       action: () => {
-        setActivePortal("gearboxes");
-        window.scrollTo({ top: 0 });
-        setTimeout(() => {
-          const el = document.querySelector("#products");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        router.push("/products?category=standard");
       },
       badge: "Enter Division",
-      color: "hover:border-brand-orange",
-      iconColor: "text-brand-orange"
+      color: "hover:border-brand-gold",
+      iconColor: "text-brand-gold"
     },
     {
       id: "custom",
@@ -55,35 +65,30 @@ export default function Home() {
       image: "/custom_gearbox.png",
       icon: <Cpu className="w-5 h-5" />,
       action: () => {
-        setActivePortal("gearboxes");
-        window.scrollTo({ top: 0 });
-        setTimeout(() => {
-          const el = document.querySelector("#products");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        router.push("/products?category=custom");
       },
       badge: "Enter Division",
-      color: "hover:border-brand-orange",
-      iconColor: "text-brand-orange"
+      color: "hover:border-brand-gold",
+      iconColor: "text-brand-gold"
     },
     {
-      id: "precision",
-      title: "Precision Gears & Components",
-      description: "Aerospace and defence grade gears manufactured to micron-tolerances.",
+      id: "components",
+      title: "Gears & Components",
+      description: "Exclusive machined components and customized spare gears for domestic and international applications.",
       image: "/precision_gears.png",
       icon: <Shield className="w-5 h-5" />,
       action: () => {
-        setShowUnderConstruction(true);
+        router.push("/products?category=components");
       },
-      badge: "Under Construction",
-      color: "hover:border-brand-navy-light",
-      iconColor: "text-brand-navy-light"
+      badge: "Enter Division",
+      color: "hover:border-brand-gold",
+      iconColor: "text-brand-gold"
     }
   ];
 
   return (
     <main className="relative min-h-screen bg-white overflow-x-hidden w-full font-sans select-none">
-      
+
       {/* Cinematic Portal Selection Screen - Ultra-Minimal Light Layout */}
       <AnimatePresence mode="wait">
         {activePortal === "portal" && (
@@ -104,7 +109,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="relative z-10 flex flex-col items-center gap-1 mt-4"
               >
-                <Logo className="h-16 md:h-20" showSubtitle={true} />
+                <Logo className="h-20 md:h-24" showSubtitle={true} />
               </motion.div>
 
               {/* Central Portal Cards - Redesigned 3-Column Layout with Premium Images */}
@@ -126,10 +131,10 @@ export default function Home() {
                         alt={portal.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      
+
                       {/* Dark gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent group-hover:from-black/60 transition-all duration-300" />
-                      
+
                       {/* Premium floating icon badge */}
                       <div className={`absolute top-4 right-4 p-2.5 rounded-xl bg-white/95 backdrop-blur-sm border border-slate-100/50 ${portal.iconColor} shadow-md group-hover:scale-110 transition-transform duration-300`}>
                         {portal.icon}
@@ -143,7 +148,7 @@ export default function Home() {
 
                     {/* Content Area */}
                     <div className="p-6 flex flex-col justify-center flex-grow">
-                      <h3 className="text-lg sm:text-xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-orange transition-colors duration-200">
+                      <h3 className="text-lg sm:text-xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors duration-200">
                         {portal.title}
                       </h3>
                       <p className="text-brand-navy/60 text-xs sm:text-sm mt-2 leading-relaxed font-sans font-medium">
@@ -154,22 +159,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* About Gishnu Gears */}
-            <About />
-
-            {/* Quality Standards & Compliance */}
-            <Certifications />
-
-            {/* Contact Us */}
-            <Contact />
-
-            {/* Premium Full-Bleed Corporate Footer */}
-            <Footer
-              onBackToPortal={handleBackToPortal}
-              activePortal={activePortal}
-              onEnterGearboxes={() => setActivePortal("gearboxes")}
-            />
 
             {/* Under Construction Modal */}
             <AnimatePresence>
@@ -190,18 +179,18 @@ export default function Home() {
                     {/* Close Button */}
                     <button
                       onClick={() => setShowUnderConstruction(false)}
-                      className="absolute top-4 right-4 p-2 rounded-lg bg-bg-light hover:bg-brand-orange/10 hover:text-brand-orange border border-slate-100 hover:border-brand-orange/20 text-brand-navy/50 transition-all duration-200 cursor-pointer shadow-sm"
+                      className="absolute top-4 right-4 p-2 rounded-lg bg-bg-light hover:bg-brand-gold/10 hover:text-brand-gold border border-slate-100 hover:border-brand-gold/20 text-brand-navy/50 transition-all duration-200 cursor-pointer shadow-sm"
                       aria-label="Close Modal"
                     >
                       <X className="w-4 h-4" />
                     </button>
 
                     {/* Industrial Symbol */}
-                    <div className="w-16 h-16 rounded-full bg-brand-orange/10 border-2 border-brand-orange flex items-center justify-center text-brand-orange mb-6">
+                    <div className="w-16 h-16 rounded-full bg-brand-gold/10 border-2 border-brand-gold flex items-center justify-center text-brand-gold mb-6">
                       <Construction className="w-7 h-7" />
                     </div>
 
-                    <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase mb-2 font-bold">
+                    <span className="text-[10px] font-mono text-brand-gold tracking-widest uppercase mb-2 font-bold">
                       Section Under Construction
                     </span>
 
@@ -236,9 +225,11 @@ export default function Home() {
           {/* Header */}
           <Navbar onBackToPortal={handleBackToPortal} />
 
-          {/* Page Sections - Products is placed FIRST, followed by Team */}
-          <Products />
+          {/* Page Sections */}
+          <About />
+          <Certifications />
           <Team />
+          <Contact />
 
           {/* Footer */}
           <Footer

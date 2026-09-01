@@ -25,7 +25,7 @@ export default function RootLayout({
       className={`${manrope.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full bg-background text-foreground selection:bg-brand-orange selection:text-white flex flex-col font-sans">
+      <body className="min-h-full bg-background text-foreground selection:bg-brand-gold selection:text-white flex flex-col font-sans">
         {children}
       </body>
     </html>

@@ -48,13 +48,13 @@ export default function Products() {
   ];
 
   return (
-    <section id="products" className="relative pt-24 pb-16 bg-slate-50 overflow-hidden">
+    <section id="products" className="relative pt-24 pb-8 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         
         {/* Header and Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-sora font-extrabold text-brand-navy tracking-tight leading-tight mb-4">
-            Interactive <span className="text-brand-orange">Product Categories</span>
+            Interactive <span className="text-brand-gold">Product Categories</span>
           </h2>
           <p className="text-brand-navy/60 text-sm sm:text-base leading-relaxed font-sans font-medium">
             Explore our specialized division catalog and view complete model technical specifications.
@@ -68,7 +68,7 @@ export default function Products() {
               key={cat.id}
               whileHover={{ y: -4 }}
               onClick={() => router.push(`/products?category=${cat.id}`)}
-              className="glass-card rounded-xl p-4 cursor-pointer border border-slate-200 bg-white text-left flex flex-col justify-between hover:border-brand-orange shadow-sm hover:shadow-md transition-all duration-200 group h-[290px]"
+              className="glass-card rounded-xl p-4 cursor-pointer border border-slate-200 bg-white text-left flex flex-col justify-between hover:border-brand-gold shadow-sm hover:shadow-md transition-all duration-200 group h-[290px]"
             >
               {/* Category Image Header - Enlarged to h-48 for massive visual focus */}
               <div className="w-full h-48 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-4 overflow-hidden shadow-inner">
@@ -79,17 +79,17 @@ export default function Products() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 ) : (
-                  <div className="text-brand-orange">{cat.icon}</div>
+                  <div className="text-brand-gold">{cat.icon}</div>
                 )}
                 
                 {/* Floating Category Icon Badge */}
-                <div className="absolute top-2.5 right-2.5 p-2 rounded-lg bg-white/95 backdrop-blur-sm border border-slate-100 text-brand-navy shadow-sm group-hover:text-brand-orange transition-colors">
+                <div className="absolute top-2.5 right-2.5 p-2 rounded-lg bg-white/95 backdrop-blur-sm border border-slate-100 text-brand-navy shadow-sm group-hover:text-brand-gold transition-colors">
                   {cat.icon}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors duration-200 leading-tight">
+                <h3 className="text-sm sm:text-base font-sora font-extrabold text-brand-navy group-hover:text-brand-gold transition-colors duration-200 leading-tight">
                   {cat.title}
                 </h3>
                 <p className="text-brand-navy/55 text-xs mt-1 leading-snug font-sans font-medium">

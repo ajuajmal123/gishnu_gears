@@ -61,8 +61,8 @@ export default function MapPlaceholder({ className = "h-[400px]" }: { className?
             onClick={() => setActiveLoc(loc)}
             className={`px-3 py-1.5 rounded-md text-[10px] font-sora font-extrabold transition-all duration-200 cursor-pointer ${
               activeLoc.id === loc.id
-                ? "bg-brand-orange text-white shadow-sm"
-                : "text-brand-navy/70 hover:text-brand-orange"
+                ? "bg-brand-gold text-white shadow-sm"
+                : "text-brand-navy/70 hover:text-brand-gold"
             }`}
           >
             {loc.id === "gishnu" ? "Gishnu Gears HQ" : "M.M Gears Facility"}
@@ -83,10 +83,10 @@ export default function MapPlaceholder({ className = "h-[400px]" }: { className?
             {/* Animated Pin Ring */}
             <div className={`relative flex items-center justify-center transition-all duration-300 ${isActive ? "scale-110" : "hover:scale-105"}`}>
               {isActive && (
-                <span className="absolute inline-flex h-7 w-7 rounded-full bg-brand-orange/30 animate-ping" />
+                <span className="absolute inline-flex h-7 w-7 rounded-full bg-brand-gold/30 animate-ping" />
               )}
               <div className={`w-4.5 h-4.5 rounded-full border-[3px] border-white shadow-md transition-all duration-300 ${
-                isActive ? "bg-brand-orange" : "bg-brand-navy/40 group-hover:bg-brand-orange/60"
+                isActive ? "bg-brand-gold" : "bg-brand-navy/40 group-hover:bg-brand-gold/60"
               }`} />
             </div>
           </div>

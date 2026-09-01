@@ -41,21 +41,21 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-20 bg-white overflow-hidden">
+    <section id="about" className="relative pt-36 pb-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-        
+
         {/* About Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-sora font-extrabold text-brand-navy tracking-tight leading-tight mb-4">
-            About <span className="text-brand-orange">Gishnu Gears</span>
+            About <span className="text-brand-gold">Gishnu Gears</span>
           </h2>
-          <p className="text-brand-orange font-mono text-xs sm:text-sm uppercase tracking-widest font-bold">
+          <p className="text-brand-gold font-mono text-xs sm:text-sm uppercase tracking-widest font-bold">
             Delivering precision gearbox solutions since 1995
           </p>
         </div>
 
         {/* 1. Short Narrative & 3-Part Image Gallery Collage */}
-        <div className="grid lg:grid-cols-12 gap-16 items-center mb-24">
+        <div className="grid lg:grid-cols-12 gap-10 items-center mb-12">
           {/* Left Text: Ultra-compact, single high-impact paragraph */}
           <div className="lg:col-span-6 flex flex-col gap-6 text-left">
             <h3 className="text-2xl sm:text-3xl font-sora font-extrabold text-brand-navy tracking-tight leading-snug">
@@ -68,7 +68,7 @@ export default function About() {
 
           {/* Right Image: Interactive 3-Part Collapsed Collage */}
           <div className="lg:col-span-6 relative h-[360px] sm:h-[400px] w-full flex items-center justify-center">
-            
+
             {/* Collage Base shadow */}
             <div className="absolute inset-0 bg-slate-50/50 border border-slate-100 rounded-3xl -z-10 pointer-events-none" />
 
@@ -130,28 +130,28 @@ export default function About() {
         </div>
 
         {/* 2. Vision & Mission Cards - Redesigned Asymmetric Glassmorphic Layout */}
-        <div className="relative grid md:grid-cols-2 gap-8 mb-24 z-10">
-          
+        <div className="relative grid md:grid-cols-2 gap-8 mb-12 z-10">
+
           {/* Ambient decorative glowing orbs in the background */}
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-brand-orange/5 blur-[80px] pointer-events-none -z-10" />
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-brand-gold/5 blur-[80px] pointer-events-none -z-10" />
           <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-72 h-72 rounded-full bg-brand-navy-light/5 blur-[80px] pointer-events-none -z-10" />
 
           {/* Vision Card */}
           <motion.div
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3 }}
-            className="glass-card rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 p-8 sm:p-10 flex flex-col items-start gap-5 text-left shadow-md hover:shadow-xl hover:border-brand-orange/20 transition-all duration-300 relative group overflow-hidden"
+            className="glass-card rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 p-8 sm:p-10 flex flex-col items-start gap-5 text-left shadow-md hover:shadow-xl hover:border-brand-gold/20 transition-all duration-300 relative group overflow-hidden"
           >
             {/* Visual top border highlight */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-orange via-brand-orange/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gold via-brand-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
             {/* Lifted metallic-accented icon badge */}
-            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-brand-orange shadow-inner group-hover:scale-110 group-hover:bg-brand-orange/5 group-hover:border-brand-orange/20 transition-all duration-300">
+            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-brand-gold shadow-inner group-hover:scale-110 group-hover:bg-brand-gold/5 group-hover:border-brand-gold/20 transition-all duration-300">
               <Eye className="w-6 h-6" />
             </div>
 
             <div className="flex flex-col gap-2">
-              <h4 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-orange transition-colors">
+              <h4 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors">
                 Our Vision
               </h4>
               <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed font-sans font-semibold">
@@ -162,14 +162,14 @@ export default function About() {
             {/* Core B2B Pillars checklist */}
             <div className="w-full flex flex-col gap-3 pt-5 border-t border-slate-100/80 mt-2">
               <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="text-brand-navy font-bold">Global Market Integration:</span>
                   <p className="text-brand-navy/60 font-medium mt-0.5">Actively exporting high-precision systems to 20+ countries worldwide.</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="text-brand-navy font-bold">Next-Generation Design:</span>
                   <p className="text-brand-navy/60 font-medium mt-0.5">Advanced structural engineering backed by full finite element stress analytics.</p>
@@ -204,14 +204,14 @@ export default function About() {
             {/* Core B2B Pillars checklist */}
             <div className="w-full flex flex-col gap-3 pt-5 border-t border-slate-100/80 mt-2">
               <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="text-brand-navy font-bold">Uncompromising Metrology:</span>
                   <p className="text-brand-navy/60 font-medium mt-0.5">CNC profile tooth grinding and Zeiss coordinate measurement at sub-micron levels.</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="text-brand-navy font-bold">Dynamic Client Focus:</span>
                   <p className="text-brand-navy/60 font-medium mt-0.5">Direct 48-hour engineering desk responses for tailored transmission specifications.</p>
@@ -234,22 +234,22 @@ export default function About() {
             {metricTiles.map((tile, idx) => (
               <div
                 key={idx}
-                className="glass-card rounded-xl p-6 bg-slate-50 border border-slate-200 shadow-sm flex flex-col justify-between text-left h-[180px] hover:border-brand-orange/20 hover:shadow-md transition-all duration-200 relative group overflow-hidden"
+                className="glass-card rounded-xl p-6 bg-slate-50 border border-slate-200 shadow-sm flex flex-col justify-between text-left h-[180px] hover:border-brand-gold/20 hover:shadow-md transition-all duration-200 relative group overflow-hidden"
               >
                 {/* Accent glow on tile hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
                 <div className="flex justify-between items-center w-full relative z-10">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-white border border-slate-100 text-brand-orange shadow-sm group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-white border border-slate-100 text-brand-gold shadow-sm group-hover:scale-105 transition-transform duration-300">
                     {tile.icon}
                   </div>
-                  <span className="text-[20px] font-sora font-black text-brand-orange tracking-tight">
+                  <span className="text-[20px] font-sora font-black text-brand-gold tracking-tight">
                     {tile.metric}
                   </span>
                 </div>
-                
+
                 <div className="relative z-10">
-                  <h5 className="text-sm font-sora font-extrabold text-brand-navy group-hover:text-brand-orange transition-colors">
+                  <h5 className="text-sm font-sora font-extrabold text-brand-navy group-hover:text-brand-gold transition-colors">
                     {tile.title}
                   </h5>
                   <p className="text-brand-navy/60 text-xs font-sans mt-1 leading-snug font-medium">

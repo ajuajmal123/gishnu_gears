@@ -41,9 +41,9 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
     setIsOpen(false);
     if (pathname === "/products") {
       if (href === "#products") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        router.push("/?portal=true");
       } else {
-        router.push("/" + href);
+        router.push("/?portal=false" + href);
       }
     } else {
       const element = document.querySelector(href);
@@ -74,7 +74,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
           className="cursor-pointer group flex items-center gap-2"
           title="Return to Portal Selection"
         >
-          <Logo className="h-10 sm:h-12" showSubtitle={false} />
+          <Logo className="h-14 sm:h-16" showSubtitle={false} />
 
         </div>
 
@@ -85,7 +85,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
               key={item.name}
               href={item.href}
               onClick={(e) => handleScrollTo(e, item.href)}
-              className="text-xs font-semibold text-brand-navy/80 hover:text-brand-orange tracking-widest transition-colors duration-200 uppercase"
+              className="text-xs font-semibold text-brand-navy/80 hover:text-brand-gold tracking-widest transition-colors duration-200 uppercase"
             >
               {item.name}
             </a>
@@ -97,7 +97,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-brand-navy/80 hover:text-brand-orange p-2.5 rounded-lg border border-slate-100 hover:border-slate-200 bg-white shadow-sm transition-all duration-200 outline-none cursor-pointer flex items-center justify-center"
+            className="text-brand-navy/80 hover:text-brand-gold p-2.5 rounded-lg border border-slate-100 hover:border-slate-200 bg-white shadow-sm transition-all duration-200 outline-none cursor-pointer flex items-center justify-center"
             aria-label="Toggle navigation menu"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -121,7 +121,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleScrollTo(e, item.href)}
-                  className="text-sm font-bold text-brand-navy/80 hover:text-brand-orange uppercase tracking-wider pl-2 py-1 transition-colors duration-150"
+                  className="text-sm font-bold text-brand-navy/80 hover:text-brand-gold uppercase tracking-wider pl-2 py-1 transition-colors duration-150"
                 >
                   {item.name}
                 </a>

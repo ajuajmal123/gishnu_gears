@@ -32,11 +32,11 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-brand-orange border-brand-orange text-white hover:bg-orange-600 hover:border-orange-600 shadow-sm",
+      "bg-brand-gold border-brand-gold text-white hover:bg-orange-600 hover:border-orange-600 shadow-sm",
     secondary:
       "bg-transparent border-brand-navy/20 text-brand-navy hover:bg-brand-navy/5 hover:border-brand-navy/40",
     glass:
-      "bg-white border-slate-200 text-brand-navy hover:text-brand-orange hover:border-brand-orange/30 shadow-sm",
+      "bg-white border-slate-200 text-brand-navy hover:text-brand-gold hover:border-brand-gold/30 shadow-sm",
   };
 
   return (

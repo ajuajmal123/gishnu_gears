@@ -9,7 +9,7 @@ export default function Logo({ className = "h-12", showSubtitle = true }: LogoPr
   return (
     <div className={`relative flex items-center select-none ${className}`}>
       <img
-        src="/logo.png"
+        src="/Gishnu Final Logo-01.png"
         alt="Gishnu Gears Logo"
         className="h-full w-auto object-contain object-left filter brightness-95 contrast-105"
       />

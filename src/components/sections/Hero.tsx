@@ -50,15 +50,15 @@ export default function Hero() {
           {/* Core B2B statistics indicators */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 mt-10 pt-8 border-t border-slate-100 w-full text-brand-navy/60 text-xs font-semibold tracking-wider uppercase">
             <div className="flex items-center gap-2">
-              <Award className="w-4.5 h-4.5 text-brand-orange" />
+              <Award className="w-4.5 h-4.5 text-brand-gold" />
               <span>30+ Years of Expertise</span>
             </div>
             <div className="flex items-center gap-2">
-              <Globe className="w-4.5 h-4.5 text-brand-orange" />
+              <Globe className="w-4.5 h-4.5 text-brand-gold" />
               <span>Exports to 20+ Countries</span>
             </div>
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4.5 h-4.5 text-brand-orange" />
+              <TrendingUp className="w-4.5 h-4.5 text-brand-gold" />
               <span>China Plus One Advantage</span>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function Hero() {
         {/* Right Graphic Column - Bold Asymmetric Product Collage */}
         <div className="lg:col-span-5 relative h-[380px] sm:h-[450px] w-full flex items-center justify-center mt-10 lg:mt-0">
           {/* Decorative background soft glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-brand-navy/5 rounded-3xl blur-2xl -z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-brand-navy/5 rounded-3xl blur-2xl -z-10 pointer-events-none" />
 
           {/* Underlayer Shadow Base */}
           <div className="absolute w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] rounded-2xl bg-slate-100 border border-slate-200/50 shadow-inner -z-10" />

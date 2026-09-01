@@ -40,13 +40,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-white overflow-hidden">
+    <section id="contact" className="relative py-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-sora font-extrabold text-brand-navy tracking-tight leading-tight">
-            Contact <span className="text-brand-orange">Us</span>
+            Contact <span className="text-brand-gold">Us</span>
           </h2>
         </div>
 
@@ -112,7 +112,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Dr. Ramesh Kumar"
-                        className="w-full bg-white border border-slate-200 focus:border-brand-orange rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
+                        className="w-full bg-white border border-slate-200 focus:border-brand-gold rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
                       />
                     </div>
                     {/* Email */}
@@ -127,7 +127,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. procurement@aviation.in"
-                        className="w-full bg-white border border-slate-200 focus:border-brand-orange rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
+                        className="w-full bg-white border border-slate-200 focus:border-brand-gold rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
                       />
                     </div>
                   </div>
@@ -144,7 +144,7 @@ export default function Contact() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="e.g. Bangalore Metro Corp"
-                        className="w-full bg-white border border-slate-200 focus:border-brand-orange rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
+                        className="w-full bg-white border border-slate-200 focus:border-brand-gold rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 shadow-sm"
                       />
                     </div>
                     {/* Vertical */}
@@ -156,7 +156,7 @@ export default function Contact() {
                         id="vertical"
                         value={formData.vertical}
                         onChange={(e) => setFormData({ ...formData, vertical: e.target.value })}
-                        className="w-full bg-white border border-slate-200 focus:border-brand-orange rounded-lg px-4 py-3 text-sm text-brand-navy/80 outline-none transition-all duration-200 appearance-none cursor-pointer shadow-sm"
+                        className="w-full bg-white border border-slate-200 focus:border-brand-gold rounded-lg px-4 py-3 text-sm text-brand-navy/80 outline-none transition-all duration-200 appearance-none cursor-pointer shadow-sm"
                       >
                         <option value="Standard Transmissions">Standard Transmissions</option>
                         <option value="Custom High-Torque Drives">Custom High-Torque Drives</option>
@@ -178,7 +178,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Provide details on ratio, torque requirement, mounting constraints, or input shaft layout..."
-                      className="w-full bg-white border border-slate-200 focus:border-brand-orange rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 resize-none shadow-sm"
+                      className="w-full bg-white border border-slate-200 focus:border-brand-gold rounded-lg px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/30 outline-none transition-all duration-200 resize-none shadow-sm"
                     />
                   </div>
 

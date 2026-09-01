@@ -2,10 +2,10 @@
 
 :root {
   --background: #ffffff; /* Pure white background */
-  --foreground: #0d1b2a; /* Deep steel navy corporate typography */
-  --brand-orange: #e8520a; /* Vibrant industrial copper accent */
-  --brand-navy: #0d1b2a; /* Steel Navy */
-  --brand-navy-light: #1b263b; /* Medium slate */
+  --foreground: #0f1c28; /* Deep steel navy corporate typography */
+  --brand-gold: #c89c43; /* Vibrant industrial copper/gold accent */
+  --brand-navy: #0f1c28; /* Steel Navy */
+  --brand-navy-light: #202f3c; /* Medium slate */
   
   --font-manrope: var(--font-manrope), "Manrope", sans-serif;
 }
@@ -14,7 +14,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  --color-brand-orange: var(--brand-orange);
+  --color-brand-gold: var(--brand-gold);
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-light: var(--brand-navy-light);
   
@@ -47,8 +47,8 @@ body {
 }
 
 .glass-card:hover {
-  border-color: #e8520a;
-  box-shadow: 0 4px 12px rgba(13, 27, 42, 0.08);
+  border-color: var(--brand-gold);
+  box-shadow: 0 4px 12px rgba(15, 28, 40, 0.08); /* slight color adjust here too */
 }
 
 /* Translucent clean B2B header */
@@ -73,5 +73,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e8520a;
+  background: var(--brand-gold);
 }

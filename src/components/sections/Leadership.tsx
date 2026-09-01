@@ -25,7 +25,7 @@ export default function Leadership() {
       profile: "PhD in Mechanical Dynamics from IIT Madras. 25+ years spearheading heavy transmission manufacturing. Pioneered Gishnu's custom gearbox architectural layout.",
       achievement: "Awarded 'Industrial Engineering Icon of the Year' 2024",
       linkedin: "#",
-      badgeIcon: <UserCheck className="w-4 h-4 text-brand-orange" />,
+      badgeIcon: <UserCheck className="w-4 h-4 text-brand-gold" />,
       image: "/leader_arvind.png",
     },
     {
@@ -35,7 +35,7 @@ export default function Leadership() {
       profile: "Alumnus of Stanford Business School & B.Tech Mechanical. Formulates global trade alliances, operations strategies, and railway-locomotive integration portfolios.",
       achievement: "Expanded Gishnu Gears to 12 international distribution nodes",
       linkedin: "#",
-      badgeIcon: <Shield className="w-4 h-4 text-brand-orange" />,
+      badgeIcon: <Shield className="w-4 h-4 text-brand-gold" />,
       image: "/leader_rajesh.png",
     },
   ];
@@ -47,7 +47,7 @@ export default function Leadership() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col items-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-sora font-extrabold text-brand-navy tracking-tight leading-tight mb-6">
-            Executive <span className="text-brand-orange">Leadership</span>
+            Executive <span className="text-brand-gold">Leadership</span>
           </h2>
           <p className="text-brand-navy/60 text-sm sm:text-base leading-relaxed font-sans font-medium">
             Guiding Gishnu Gears with technical supremacy, absolute engineering discipline, and a shared vision of transforming mechanical motion across international B2B sectors.
@@ -76,7 +76,7 @@ export default function Leadership() {
                     <h3 className="text-xl sm:text-2xl font-sora font-extrabold text-white tracking-tight drop-shadow-sm">
                       {leader.name}
                     </h3>
-                    <p className="text-brand-orange font-mono text-xs uppercase tracking-widest mt-1 font-bold drop-shadow-sm">
+                    <p className="text-brand-gold font-mono text-xs uppercase tracking-widest mt-1 font-bold drop-shadow-sm">
                       {leader.role}
                     </p>
                   </div>
@@ -90,7 +90,7 @@ export default function Leadership() {
 
                   {/* Achievement Badge */}
                   <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded bg-slate-50 border border-slate-100 w-full text-left">
-                    <span className="p-1 rounded bg-brand-orange/10 border border-brand-orange/20">
+                    <span className="p-1 rounded bg-brand-gold/10 border border-brand-gold/20">
                       {leader.badgeIcon}
                     </span>
                     <span className="text-[11px] font-mono text-brand-navy/60 leading-snug font-bold">
@@ -104,7 +104,7 @@ export default function Leadership() {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       href={leader.linkedin}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-slate-50 hover:bg-brand-orange/10 border border-slate-200 hover:border-brand-orange/20 text-xs font-semibold text-brand-navy hover:text-brand-orange transition-all duration-200 font-mono shadow-sm cursor-pointer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-slate-50 hover:bg-brand-gold/10 border border-slate-200 hover:border-brand-gold/20 text-xs font-semibold text-brand-navy hover:text-brand-gold transition-all duration-200 font-mono shadow-sm cursor-pointer"
                       aria-label={`Connect with ${leader.name} on LinkedIn`}
                     >
                       <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
