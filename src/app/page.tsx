@@ -4,6 +4,25 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Settings, Cpu, Shield, X, ArrowRight, Construction } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
+function UrlConfigurator({ setActivePortal }: { setActivePortal: (val: "portal" | "gearboxes") => void }) {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("portal") === "false" || window.location.hash) {
+      setActivePortal("gearboxes");
+      if (window.location.hash) {
+        setTimeout(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [searchParams, setActivePortal]);
+
+  return null;
+}
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 
@@ -20,19 +39,6 @@ export default function Home() {
   const [showUnderConstruction, setShowUnderConstruction] = useState(false);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    if (searchParams.get("portal") === "false" || window.location.hash) {
-      setActivePortal("gearboxes");
-      if (window.location.hash) {
-        setTimeout(() => {
-          const el = document.querySelector(window.location.hash);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 200);
-      }
-    }
-  }, [searchParams]);
 
   const handleEnterGearboxes = () => {
     setActivePortal("gearboxes");
@@ -88,6 +94,9 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-white overflow-x-hidden w-full font-sans select-none">
+      <Suspense fallback={null}>
+        <UrlConfigurator setActivePortal={setActivePortal} />
+      </Suspense>
 
       {/* Cinematic Portal Selection Screen - Ultra-Minimal Light Layout */}
       <AnimatePresence mode="wait">
