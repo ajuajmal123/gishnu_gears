@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 w-full text-center lg:text-left grid lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 relative z-10 w-full text-center lg:text-left grid lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Copy Column */}
         <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-6">

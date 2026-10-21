@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative pt-36 pb-12 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 relative z-10">
 
         {/* About Header */}
         <div className="text-center max-w-3xl mx-auto mb-8">
@@ -96,15 +96,15 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02, zIndex: 30 }}
-              className="absolute right-4 top-10 z-10 w-[45%] aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg cursor-pointer"
+              className="absolute right-4 top-10 z-10 w-[45%] aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg cursor-pointer p-2 flex items-center justify-center"
             >
               <img
-                src="/standard_gearbox.png"
+                src="/products/G Series/G Series GU 162 to 337 - 3.png"
                 alt="Standard Gearbox"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <div className="absolute bottom-2 left-3 right-3 py-0.5 px-1.5 rounded bg-black/75 text-[7px] font-mono text-white text-left uppercase tracking-wider">
-                Aquaculture Units
+                Standard Units
               </div>
             </motion.div>
 
@@ -114,12 +114,12 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02, zIndex: 30 }}
-              className="absolute right-12 bottom-4 z-20 w-[40%] aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md cursor-pointer"
+              className="absolute right-12 bottom-4 z-20 w-[40%] aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md cursor-pointer p-2 flex items-center justify-center"
             >
               <img
-                src="/custom_gearbox.png"
+                src="/products/M Series/M Series Bevel Helical Gearbox.png"
                 alt="Custom Gearbox"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <div className="absolute bottom-2 left-3 right-3 py-0.5 px-1.5 rounded bg-black/75 text-[7px] font-mono text-white text-left uppercase tracking-wider">
                 Custom Drives

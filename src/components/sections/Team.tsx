@@ -67,7 +67,7 @@ export default function Team() {
 
   return (
     <section id="team" className="relative py-12 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 relative z-10">
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8">

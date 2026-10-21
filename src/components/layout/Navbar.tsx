@@ -64,18 +64,17 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-4 shadow-sm" : "bg-transparent py-6"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3 sm:py-4 shadow-sm" : "glass-nav sm:bg-transparent py-3 sm:py-5"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 flex justify-between items-center">
+      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 flex justify-between items-center">
         {/* Logo */}
         <div
           onClick={onBackToPortal}
           className="cursor-pointer group flex items-center gap-2"
           title="Return to Portal Selection"
         >
-          <Logo className="h-14 sm:h-16" showSubtitle={false} />
-
+          <Logo className="h-12 sm:h-14 md:h-16" showSubtitle={false} />
         </div>
 
         {/* Desktop Links - Steel Navy */}

@@ -55,7 +55,7 @@ export default function Home() {
       id: "standard",
       title: "Standard Gearboxes",
       description: "High-end industrial transmission units engineered for maximum power.",
-      image: "/standard_gearbox.png",
+      image: "/products/G Series/G Series GU 162 to 337 - 3.png",
       icon: <Settings className="w-5 h-5" />,
       action: () => {
         router.push("/products?category=standard");
@@ -68,7 +68,7 @@ export default function Home() {
       id: "custom",
       title: "Customized Gearboxes",
       description: "Bespoke multi-stage high-torque drives engineered to your exact specifications.",
-      image: "/custom_gearbox.png",
+      image: "/products/M Series/M Series Bevel Helical Gearbox.png",
       icon: <Cpu className="w-5 h-5" />,
       action: () => {
         router.push("/products?category=custom");
@@ -81,7 +81,7 @@ export default function Home() {
       id: "components",
       title: "Gears & Components",
       description: "Exclusive machined components and customized spare gears for domestic and international applications.",
-      image: "/precision_gears.png",
+      image: "/products/O Series/O series.png",
       icon: <Shield className="w-5 h-5" />,
       action: () => {
         router.push("/products?category=components");
@@ -110,7 +110,7 @@ export default function Home() {
             className="fixed inset-0 z-40 bg-white overflow-y-auto w-full"
           >
             {/* Main Portal Content Area */}
-            <div className="flex flex-col items-center justify-between min-h-[90vh] py-16 px-6 max-w-7xl mx-auto w-full">
+            <div className="flex flex-col items-center justify-between min-h-[90vh] py-12 lg:py-16 px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 max-w-[1536px] 2xl:max-w-[1640px] mx-auto w-full">
               {/* Top Logo Area */}
               <motion.div
                 initial={{ y: -15, opacity: 0 }}
@@ -122,7 +122,7 @@ export default function Home() {
               </motion.div>
 
               {/* Central Portal Cards - Redesigned 3-Column Layout with Premium Images */}
-              <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 my-auto py-8">
+              <div className="relative z-10 w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-[1500px] grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 my-auto py-8">
                 {portals.map((portal, index) => (
                   <motion.div
                     key={portal.id}
@@ -131,18 +131,18 @@ export default function Home() {
                     transition={{ duration: 0.7, delay: 0.15 * (index + 1) }}
                     whileHover={{ y: -6 }}
                     onClick={portal.action}
-                    className={`glass-card rounded-2xl cursor-pointer relative group border border-slate-200 ${portal.color} bg-white shadow-md hover:shadow-xl transition-all duration-300 text-left flex flex-col overflow-hidden h-[380px]`}
+                    className={`glass-card rounded-2xl cursor-pointer relative group border border-slate-200 ${portal.color} bg-white shadow-md hover:shadow-xl transition-all duration-300 text-left flex flex-col overflow-hidden h-[410px] sm:h-[430px] xl:h-[450px]`}
                   >
                     {/* Card Image Area with Zoom effect */}
-                    <div className="relative w-full h-60 overflow-hidden bg-slate-50 border-b border-slate-100 flex items-center justify-center">
+                    <div className="relative w-full h-64 sm:h-72 xl:h-76 overflow-hidden bg-slate-50 border-b border-slate-100 flex items-center justify-center p-4">
                       <img
                         src={portal.image}
                         alt={portal.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
 
-                      {/* Dark gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent group-hover:from-black/60 transition-all duration-300" />
+                      {/* Subtle gradient vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent group-hover:from-black/30 transition-all duration-300 pointer-events-none" />
 
                       {/* Premium floating icon badge */}
                       <div className={`absolute top-4 right-4 p-2.5 rounded-xl bg-white/95 backdrop-blur-sm border border-slate-100/50 ${portal.iconColor} shadow-md group-hover:scale-110 transition-transform duration-300`}>
@@ -150,7 +150,7 @@ export default function Home() {
                       </div>
 
                       {/* Mini overlay badge on bottom left of image */}
-                      <span className="absolute bottom-3 left-4 text-[10px] font-bold text-white uppercase tracking-wider bg-brand-navy/60 backdrop-blur-sm px-2 py-0.5 rounded-md">
+                      <span className="absolute bottom-3 left-4 text-[10px] font-bold text-white uppercase tracking-wider bg-brand-navy/80 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm">
                         {portal.badge}
                       </span>
                     </div>

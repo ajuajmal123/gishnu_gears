@@ -22,21 +22,21 @@ export default function Products() {
       title: "Standard Gearboxes",
       icon: <Settings className="w-5 h-5" />,
       description: "Heavy-duty transmission systems.",
-      image: "/standard_gearbox.png",
+      image: "/products/G Series/G Series GU 162 to 337 - 3.png",
     },
     {
       id: "custom",
       title: "Custom Gearboxes",
       icon: <Cpu className="w-5 h-5" />,
       description: "Tailored high-torque drives.",
-      image: "/custom_gearbox.png",
+      image: "/products/M Series/M Series Bevel Helical Gearbox.png",
     },
     {
       id: "railway",
       title: "Railway Gearboxes",
       icon: <Train className="w-5 h-5" />,
       description: "Traction drive transmissions.",
-      image: "/railway_gearbox.png",
+      image: "/products/Z Series/Z Series 1 - 2.png",
     },
     {
       id: "defence",
@@ -49,7 +49,7 @@ export default function Products() {
 
   return (
     <section id="products" className="relative pt-24 pb-8 bg-slate-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 relative z-10">
         
         {/* Header and Title */}
         <div className="text-center max-w-3xl mx-auto mb-8">
@@ -71,12 +71,12 @@ export default function Products() {
               className="glass-card rounded-xl p-4 cursor-pointer border border-slate-200 bg-white text-left flex flex-col justify-between hover:border-brand-gold shadow-sm hover:shadow-md transition-all duration-200 group h-[290px]"
             >
               {/* Category Image Header - Enlarged to h-48 for massive visual focus */}
-              <div className="w-full h-48 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-4 overflow-hidden shadow-inner">
+              <div className="w-full h-48 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50 mb-4 overflow-hidden shadow-inner p-3">
                 {cat.image ? (
                   <img
                     src={cat.image}
                     alt={cat.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
                   <div className="text-brand-gold">{cat.icon}</div>
