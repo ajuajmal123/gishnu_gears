@@ -2,11 +2,11 @@
 
 import React from "react";
 import Logo from "../ui/Logo";
-import { ArrowUp, MapPin, Phone, Mail, Clock, ShieldCheck, ChevronRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShieldCheck, ChevronRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 interface FooterProps {
-  onBackToPortal: () => void;
+  onBackToPortal?: () => void;
   activePortal?: "portal" | "gearboxes";
   onEnterGearboxes?: () => void;
 }
@@ -14,10 +14,6 @@ interface FooterProps {
 export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes }: FooterProps) {
   const pathname = usePathname();
   const router = useRouter();
-
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const productLinks = [
     { name: "Standard Industrial Gearboxes", href: "/products?category=standard" },
@@ -30,8 +26,6 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
   const navLinks = [
     { name: "Products Showcase", href: "#products" },
     { name: "About Gishnu", href: "#about" },
-    { name: "Quality & Certifications", href: "#certifications" },
-    { name: "Engineering Team", href: "#team" },
     { name: "Contact & Facilities", href: "#contact" },
   ];
 
@@ -62,7 +56,9 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       } else {
-        onBackToPortal();
+        if (onBackToPortal) {
+          onBackToPortal();
+        }
         setTimeout(() => {
           const el = document.querySelector(href);
           if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -74,10 +70,10 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
   return (
     <footer className="relative bg-gradient-to-br from-slate-50 via-white to-slate-50 border-t border-slate-200 pt-14 pb-8 overflow-hidden text-brand-navy w-full">
       <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 relative z-10">
-        
+
         {/* Main 4-Column Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 pb-12">
-          
+
           {/* Column 1: Brand Info & Accreditations (lg:col-span-4) */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-4 flex flex-col items-start gap-4 text-left">
             <Logo className="h-16 sm:h-20" showSubtitle={false} />
@@ -97,7 +93,7 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
             {/* Socials */}
             <div className="flex gap-3 mt-3">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/gishnu-gears/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:border-brand-gold flex items-center justify-center text-brand-navy/60 hover:text-brand-gold hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm"
@@ -108,18 +104,18 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
                 </svg>
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.facebook.com/gishnugears.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:border-brand-gold flex items-center justify-center text-brand-navy/60 hover:text-brand-gold hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm"
-                aria-label="Twitter Profile"
+                aria-label="Facebook Page"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/channel/UC7lr-tXnGkyKBBSXh0EF0hg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:border-brand-gold flex items-center justify-center text-brand-navy/60 hover:text-brand-gold hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm"
@@ -178,20 +174,20 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
             <h4 className="text-brand-navy font-sora font-bold text-xs uppercase tracking-widest mb-2">
               Coimbatore Facility
             </h4>
-            
+
             <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-sans font-medium">
               <MapPin className="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5" />
-              <span>Door No.3, S.F.NO.796, Avinashi Rd, Neelambur, Coimbatore, Tamil Nadu 641062</span>
+              <span>Gishnu Gears Private Limited<br />S.F.NO.796, Door No.3/217K, Avinashi road, Near Hotel Le Meridian, Neelambur,Coimbatore-641062 GSTIN/UIN: 33AAHCG6311Q1ZD</span>
             </div>
 
             <div className="flex items-center gap-2.5 text-xs text-brand-navy/70 font-sans font-medium mt-1">
               <Phone className="w-4 h-4 text-brand-gold flex-shrink-0" />
-              <span>+91 422 262 5588 / +91 94430 45588</span>
+              <span> +91-9943917774</span>
             </div>
 
             <div className="flex items-center gap-2.5 text-xs text-brand-navy/70 font-sans font-medium">
               <Mail className="w-4 h-4 text-brand-gold flex-shrink-0" />
-              <span>info@gishnugears.com</span>
+              <span>marketing@gishnugears.in</span>
             </div>
 
             <div className="flex items-center gap-2.5 text-xs text-brand-navy/70 font-sans font-medium">
@@ -207,7 +203,7 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
           <div>
             &copy; {new Date().getFullYear()} GISHNU GEARS PRIVATE LIMITED. ALL RIGHTS RESERVED.
           </div>
-          
+
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <a href="#" className="hover:text-brand-gold transition-colors duration-200 font-semibold">
               PRIVACY POLICY
@@ -215,22 +211,37 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
             <a href="#" className="hover:text-brand-gold transition-colors duration-200 font-semibold">
               TERMS OF USE
             </a>
-            {activePortal !== "portal" && (
-              <button
-                onClick={onBackToPortal}
-                className="hover:text-brand-gold text-brand-gold font-bold transition-colors duration-200 uppercase cursor-pointer"
+            <small className="copyright__content font-sans text-xs inline-flex items-center gap-1 font-normal">
+              <span className="text-brand-navy/70 font-normal">Designed by </span>
+              <a
+                href="https://www.instagram.com/nashcreations.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="blinking-text"
               >
-                Portal Selection
-              </button>
-            )}
-            <button
-              onClick={handleScrollToTop}
-              className="inline-flex items-center gap-1.5 text-brand-navy/70 hover:text-brand-gold font-bold uppercase transition-colors duration-200 cursor-pointer ml-1"
-              aria-label="Back to top"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
+                Creations
+              </a>
+            </small>
+            <style jsx global>{`
+              @keyframes blinkColors {
+                0%   { color: #ffd431; text-shadow: 0 0 8px rgba(255, 212, 49, 0.6); }
+                20%  { color: #03ff75; text-shadow: 0 0 8px rgba(3, 255, 117, 0.6); }
+                40%  { color: #cd76ea; text-shadow: 0 0 8px rgba(205, 118, 234, 0.6); }
+                60%  { color: #ffb444; text-shadow: 0 0 8px rgba(255, 180, 68, 0.6); }
+                80%  { color: #ff5e5e; text-shadow: 0 0 8px rgba(255, 94, 94, 0.6); }
+                100% { color: #38dbff; text-shadow: 0 0 8px rgba(56, 219, 255, 0.6); }
+              }
+
+              .blinking-text {
+                font-family: var(--font-sans), sans-serif;
+                font-weight: 800 !important;
+                font-size: 15px !important;
+                animation: blinkColors 3s linear infinite !important;
+                text-decoration: none !important;
+                display: inline-block;
+                letter-spacing: 0.02em;
+              }
+            `}</style>
           </div>
         </div>
 

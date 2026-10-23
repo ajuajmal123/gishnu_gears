@@ -75,3 +75,24 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-gold);
 }
+
+@keyframes blinkColors {
+  0%   { color: #ffd431; text-shadow: 0 0 8px rgba(255, 212, 49, 0.6); }
+  20%  { color: #03ff75; text-shadow: 0 0 8px rgba(3, 255, 117, 0.6); }
+  40%  { color: #cd76ea; text-shadow: 0 0 8px rgba(205, 118, 234, 0.6); }
+  60%  { color: #ffb444; text-shadow: 0 0 8px rgba(255, 180, 68, 0.6); }
+  80%  { color: #ff5e5e; text-shadow: 0 0 8px rgba(255, 94, 94, 0.6); }
+  100% { color: #38dbff; text-shadow: 0 0 8px rgba(56, 219, 255, 0.6); }
+}
+
+.blinking-text {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  animation: blinkColors 3s linear infinite !important;
+  text-decoration: none !important;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+

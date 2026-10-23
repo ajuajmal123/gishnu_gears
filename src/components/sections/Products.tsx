@@ -22,7 +22,7 @@ export default function Products() {
       title: "Standard Gearboxes",
       icon: <Settings className="w-5 h-5" />,
       description: "Heavy-duty transmission systems.",
-      image: "/products/G Series/G Series GU 162 to 337 - 3.png",
+      image: "/products/G Series/G Series GU 162 to 337 - 3.jpeg",
     },
     {
       id: "custom",
@@ -36,7 +36,7 @@ export default function Products() {
       title: "Railway Gearboxes",
       icon: <Train className="w-5 h-5" />,
       description: "Traction drive transmissions.",
-      image: "/products/Z Series/Z Series 1 - 2.png",
+      image: "/products/Z Series/WhatsApp Image 2026-10-23 at 6.02.03 PM (1).jpeg",
     },
     {
       id: "defence",

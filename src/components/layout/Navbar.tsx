@@ -32,7 +32,6 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
   const navItems = [
     { name: "Products", href: "#products" },
     { name: "About Us", href: "#about" },
-    { name: "Quality Standards", href: "#certifications" },
     { name: "Contact Us", href: "#contact" },
   ];
 

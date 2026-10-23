@@ -33,7 +33,7 @@ export default function About() {
       icon: <Globe className="w-5 h-5" />,
     },
     {
-      metric: "ISO 9001",
+      metric: "ISO 9001:2015",
       title: "Certified Systems",
       description: "Audited Quality Management parameters.",
       icon: <ShieldCheck className="w-5 h-5" />,
@@ -99,7 +99,7 @@ export default function About() {
               className="absolute right-4 top-10 z-10 w-[45%] aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg cursor-pointer p-2 flex items-center justify-center"
             >
               <img
-                src="/products/G Series/G Series GU 162 to 337 - 3.png"
+                src="/products/G Series/G Series GU 162 to 337 - 3.jpeg"
                 alt="Standard Gearbox"
                 className="w-full h-full object-contain"
               />
@@ -129,98 +129,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* 2. Vision & Mission Cards - Redesigned Asymmetric Glassmorphic Layout */}
-        <div className="relative grid md:grid-cols-2 gap-8 mb-12 z-10">
 
-          {/* Ambient decorative glowing orbs in the background */}
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-brand-gold/5 blur-[80px] pointer-events-none -z-10" />
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-72 h-72 rounded-full bg-brand-navy-light/5 blur-[80px] pointer-events-none -z-10" />
-
-          {/* Vision Card */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ duration: 0.3 }}
-            className="glass-card rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 p-8 sm:p-10 flex flex-col items-start gap-5 text-left shadow-md hover:shadow-xl hover:border-brand-gold/20 transition-all duration-300 relative group overflow-hidden"
-          >
-            {/* Visual top border highlight */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gold via-brand-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-            {/* Lifted metallic-accented icon badge */}
-            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-brand-gold shadow-inner group-hover:scale-110 group-hover:bg-brand-gold/5 group-hover:border-brand-gold/20 transition-all duration-300">
-              <Eye className="w-6 h-6" />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h4 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors">
-                Our Vision
-              </h4>
-              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed font-sans font-semibold">
-                To become a globally trusted gearbox manufacturing brand known for precision, innovation, and quality.
-              </p>
-            </div>
-
-            {/* Core B2B Pillars checklist */}
-            <div className="w-full flex flex-col gap-3 pt-5 border-t border-slate-100/80 mt-2">
-              <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-brand-navy font-bold">Global Market Integration:</span>
-                  <p className="text-brand-navy/60 font-medium mt-0.5">Actively exporting high-precision systems to 20+ countries worldwide.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-brand-navy font-bold">Next-Generation Design:</span>
-                  <p className="text-brand-navy/60 font-medium mt-0.5">Advanced structural engineering backed by full finite element stress analytics.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Mission Card */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ duration: 0.3 }}
-            className="glass-card rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 p-8 sm:p-10 flex flex-col items-start gap-5 text-left shadow-md hover:shadow-xl hover:border-brand-navy-light/20 transition-all duration-300 relative group overflow-hidden"
-          >
-            {/* Visual top border highlight */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-navy-light via-brand-navy-light/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-            {/* Lifted metallic-accented icon badge */}
-            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-brand-navy shadow-inner group-hover:scale-110 group-hover:bg-brand-navy-light/5 group-hover:border-brand-navy-light/20 transition-all duration-300">
-              <Target className="w-6 h-6" />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h4 className="text-xl sm:text-2xl font-sora font-extrabold text-brand-navy tracking-tight group-hover:text-brand-navy-light transition-colors">
-                Our Mission
-              </h4>
-              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed font-sans font-semibold">
-                To deliver durable, high-performance gear solutions with advanced engineering, reliable service, and customer-focused manufacturing.
-              </p>
-            </div>
-
-            {/* Core B2B Pillars checklist */}
-            <div className="w-full flex flex-col gap-3 pt-5 border-t border-slate-100/80 mt-2">
-              <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-brand-navy font-bold">Uncompromising Metrology:</span>
-                  <p className="text-brand-navy/60 font-medium mt-0.5">CNC profile tooth grinding and Zeiss coordinate measurement at sub-micron levels.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2.5 text-xs text-brand-navy/70 font-semibold font-sans">
-                <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-brand-navy font-bold">Dynamic Client Focus:</span>
-                  <p className="text-brand-navy/60 font-medium mt-0.5">Direct 48-hour engineering desk responses for tailored transmission specifications.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
 
         {/* 3. Why Gishnu Gears: High-Impact Visual Metrics Dashboard (No Text Paragraph blocks) */}
         <div className="w-full text-left">

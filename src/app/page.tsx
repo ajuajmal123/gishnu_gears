@@ -55,7 +55,7 @@ export default function Home() {
       id: "standard",
       title: "Standard Gearboxes",
       description: "High-end industrial transmission units engineered for maximum power.",
-      image: "/products/G Series/G Series GU 162 to 337 - 3.png",
+      image: "/products/G Series/G Series GU 162 to 337 - 3.jpeg",
       icon: <Settings className="w-5 h-5" />,
       action: () => {
         router.push("/products?category=standard");
@@ -236,8 +236,8 @@ export default function Home() {
 
           {/* Page Sections */}
           <About />
-          <Certifications />
-          <Team />
+          {/* <Certifications /> */}
+          {/*   <Team /> */}
           <Contact />
 
           {/* Footer */}
