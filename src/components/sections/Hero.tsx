@@ -86,7 +86,7 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
-              Standard Series
+              Standard Gearboxes
             </div>
           </motion.div>
 
@@ -104,7 +104,7 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
-              Custom-Built
+              Customized Gearboxes
             </div>
           </motion.div>
 
@@ -122,7 +122,7 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-2 left-3 right-3 py-1 px-2 rounded bg-black/60 backdrop-blur-sm text-[8px] font-mono text-white text-left uppercase font-bold tracking-wider">
-              Precision Space
+              Gears & Components
             </div>
           </motion.div>
         </div>

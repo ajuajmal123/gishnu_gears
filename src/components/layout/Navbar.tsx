@@ -90,7 +90,6 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
           ))}
         </div>
 
-
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center">
           <button

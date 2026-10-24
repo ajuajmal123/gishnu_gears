@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, Cpu, Shield, Train, ChevronRight, ChevronLeft, Calendar, Phone, X, ChevronDown, Check } from "lucide-react";
+import { Settings, Cpu, Layers, ChevronRight, ChevronLeft, Calendar, Phone, X, ChevronDown, Check, Send } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
+import EnquiryModal from "@/components/ui/EnquiryModal";
 
 interface Product {
   id: string;
@@ -44,6 +45,12 @@ export default function ProductsClientPage() {
   const [activeSeries, setActiveSeries] = useState<Series | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [catDropdownOpen, setCatDropdownOpen] = useState(false);
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
+  const [enquiryModalData, setEnquiryModalData] = useState<{
+    category?: string;
+    product?: string;
+    specs?: string[];
+  }>({});
 
   useEffect(() => {
     const catParam = searchParams.get("category");
@@ -169,7 +176,7 @@ export default function ProductsClientPage() {
     },
     {
       id: "custom",
-      title: "Custom Gearboxes",
+      title: "Customized Gearboxes",
       icon: <Cpu className="w-5 h-5" />,
       description: "Tailored multi-stage high-torque drives engineered for custom applications.",
       series: [
@@ -235,9 +242,9 @@ export default function ProductsClientPage() {
     },
     {
       id: "components",
-      title: "Gears & Components",
-      icon: <Shield className="w-5 h-5" />,
-      description: "Exclusive machined components and specialized gears.",
+      title: "Gears and Components",
+      icon: <Layers className="w-5 h-5" />,
+      description: "Exclusive machined components, transfer housings, and specialized industrial gears.",
       series: [
         {
           id: "cmp-c",
@@ -282,14 +289,14 @@ export default function ProductsClientPage() {
         {
           id: "cmp-r",
           name: "R-SERIES",
-          specs: ["Applications: Multi-industry", "High Precision"],
-          description: "Gears and components for specialized applications.",
+          specs: ["Applications: Industrial Automation", "High Precision"],
+          description: "Gears and components for industrial automation and specialized machinery.",
           image: "/products/O Series/O series.png",
           products: [
-            { id: 'r-1', name: 'Railway Applications', specs: ['Application: Railway', 'High Precision'], description: 'Components engineered for railway applications.', image: '/products/O Series/O series.png' },
-            { id: 'r-2', name: 'Defence Applications', specs: ['Application: Defence', 'High Precision'], description: 'Components engineered for defence applications.', image: '/products/O Series/O series.png' },
-            { id: 'r-3', name: 'Aerospace Applications', specs: ['Application: Aerospace', 'High Precision'], description: 'Components engineered for aerospace applications.', image: '/products/O Series/O series.png' },
-            { id: 'r-4', name: 'Robotics Applications', specs: ['Application: Robotics', 'High Precision'], description: 'Components engineered for robotics applications.', image: '/products/O Series/O series.png' }
+            { id: 'r-1', name: 'Industrial Machinery Applications', specs: ['Application: Industrial', 'High Precision'], description: 'Components engineered for industrial manufacturing and process plants.', image: '/products/O Series/O series.png' },
+            { id: 'r-2', name: 'Robotics & Automation Applications', specs: ['Application: Robotics', 'High Precision'], description: 'Components engineered for robotics and automated transmission systems.', image: '/products/O Series/O series.png' },
+            { id: 'r-3', name: 'Power Transmission Applications', specs: ['Application: Power Drive', 'High Precision'], description: 'Gears engineered for continuous high-torque industrial power transmission.', image: '/products/O Series/O series.png' },
+            { id: 'r-4', name: 'Material Handling Applications', specs: ['Application: Handling', 'High Precision'], description: 'Components engineered for industrial conveyors, hoists, and lifts.', image: '/products/O Series/O series.png' }
           ],
         },
       ],
@@ -298,8 +305,13 @@ export default function ProductsClientPage() {
 
   const activeCatData = categories.find((cat) => cat.id === activeCategory) || categories[0];
 
-  const handleInquiryClick = () => {
-    router.push("/#contact");
+  const handleInquiryClick = (productName?: string, specs?: string[]) => {
+    setEnquiryModalData({
+      category: activeCatData.title,
+      product: productName || "",
+      specs: specs || [],
+    });
+    setIsEnquiryModalOpen(true);
   };
 
   const handleBackToPortal = () => {
@@ -614,12 +626,15 @@ export default function ProductsClientPage() {
                     variant="primary"
                     size="xs"
                     onClick={() => {
+                      const prodName = selectedProduct.name;
+                      const prodSpecs = selectedProduct.specs;
                       setSelectedProduct(null);
-                      handleInquiryClick();
+                      handleInquiryClick(prodName, prodSpecs);
                     }}
-                    className="w-auto px-6 shadow-md hover:shadow-brand-gold/15"
+                    className="w-auto px-6 shadow-md hover:shadow-brand-gold/15 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    Submit Technical Inquiry
+                    <span>Submit Enquiry</span>
+                    <Send className="w-3.5 h-3.5" />
                   </Button>
                 </div>
               </div>
@@ -627,6 +642,15 @@ export default function ProductsClientPage() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Enquiry Form Modal */}
+      <EnquiryModal
+        isOpen={isEnquiryModalOpen}
+        onClose={() => setIsEnquiryModalOpen(false)}
+        initialCategory={enquiryModalData.category}
+        initialProduct={enquiryModalData.product}
+        initialSpecs={enquiryModalData.specs}
+      />
 
       {/* Global Footer */}
       <Footer onBackToPortal={handleBackToPortal} />

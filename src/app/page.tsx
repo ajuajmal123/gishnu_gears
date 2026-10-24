@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, Cpu, Shield, X, ArrowRight, Construction } from "lucide-react";
+import { Settings, Cpu, Layers, X, ArrowRight, Construction } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -79,10 +79,10 @@ export default function Home() {
     },
     {
       id: "components",
-      title: "Gears & Components",
+      title: "Gears and Components",
       description: "Exclusive machined components and customized spare gears for domestic and international applications.",
       image: "/products/O Series/O series.png",
-      icon: <Shield className="w-5 h-5" />,
+      icon: <Layers className="w-5 h-5" />,
       action: () => {
         router.push("/products?category=components");
       },
@@ -208,7 +208,7 @@ export default function Home() {
                     </h4>
 
                     <p className="text-brand-navy/60 text-sm leading-relaxed mb-6 font-sans">
-                      Our Precision Gears division focuses on micron-tolerances (under 0.001mm) for defence and aerospace actuators. This sector portal is undergoing system alignment and updates.
+                      Our Gears and Components division focuses on micron-tolerances for high-torque industrial transmissions and custom machined components.
                     </p>
 
                     <Button variant="primary" onClick={() => setShowUnderConstruction(false)}>

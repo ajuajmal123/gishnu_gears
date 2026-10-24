@@ -10,8 +10,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "Gishnu Gears | Engineering Motion with Precision",
-  description: "Advanced Industrial Gearbox Solutions & Precision Engineering for Modern High-End Manufacturing, Railway, Aerospace, and Defence Industries.",
-  keywords: ["Gearboxes", "Precision Gears", "Gishnu Gears", "Railway Gearboxes", "Custom Industrial Gearbox", "Siemens Partner", "Bosch Industrial"],
+  description: "Advanced Industrial Gearbox Solutions & Precision Engineering for Standard Gearboxes, Customized Gearboxes, and Gears & Components.",
+  keywords: ["Gearboxes", "Standard Gearboxes", "Customized Gearboxes", "Gears and Components", "Gishnu Gears", "Custom Industrial Gearbox", "Industrial Transmissions"],
 };
 
 export default function RootLayout({

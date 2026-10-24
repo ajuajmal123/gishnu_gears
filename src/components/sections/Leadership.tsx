@@ -32,7 +32,7 @@ export default function Leadership() {
       id: 2,
       name: "Rajesh K. Gishnu",
       role: "Chief Executive Officer",
-      profile: "Alumnus of Stanford Business School & B.Tech Mechanical. Formulates global trade alliances, operations strategies, and railway-locomotive integration portfolios.",
+      profile: "Alumnus of Stanford Business School & B.Tech Mechanical. Formulates global trade alliances, operations strategies, and custom high-torque industrial gearbox portfolios.",
       achievement: "Expanded Gishnu Gears to 12 international distribution nodes",
       linkedin: "#",
       badgeIcon: <Shield className="w-4 h-4 text-brand-gold" />,

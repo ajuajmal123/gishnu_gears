@@ -16,11 +16,11 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
   const router = useRouter();
 
   const productLinks = [
-    { name: "Standard Industrial Gearboxes", href: "/products?category=standard" },
-    { name: "Customized High-Torque Drives", href: "/products?category=custom" },
-    { name: "Precision Gears & Components", href: "/products?category=components" },
+    { name: "Standard Gearboxes", href: "/products?category=standard" },
+    { name: "Customized Gearboxes", href: "/products?category=custom" },
+    { name: "Gears and Components", href: "/products?category=components" },
     { name: "Maintenance & Overhaul Services", href: "/products?category=custom" },
-    { name: "Technical Procurement RFQ", href: "#contact" },
+    { name: "Submit Technical RFQ", href: "#contact" },
   ];
 
   const navLinks = [
@@ -81,7 +81,7 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
               Transforming Innovation &bull; Since 1995
             </span>
             <p className="text-brand-navy/65 text-xs sm:text-sm mt-2 leading-relaxed font-sans font-medium">
-              Gishnu Gears is an ISO 9001:2015 certified manufacturer of high-precision industrial transmissions, bespoke gearboxes, and aerospace-grade mechanical components in Coimbatore, India.
+              Gishnu Gears is an ISO 9001:2015 certified manufacturer of high-precision industrial transmissions, standard & customized gearboxes, and precision mechanical components in Coimbatore, India.
             </p>
 
             {/* Quality Accreditation Tag */}

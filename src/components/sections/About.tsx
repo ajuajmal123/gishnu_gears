@@ -62,7 +62,7 @@ export default function About() {
               Engineering the Future of Industrial Power Transmission
             </h3>
             <p className="text-brand-navy/75 text-base leading-relaxed font-sans font-medium">
-              Gishnu Gears Private Limited is an ISO 9001:2015 certified manufacturer specializing in custom gear drives for B2B industrial, aquaculture, and space-defence sectors. Combining advanced CNC tooth-grinding technology with absolute structural metrology, we supply rugged, micron-precision transmissions engineered for peak load durability.
+              Gishnu Gears Private Limited is an ISO 9001:2015 certified manufacturer specializing in standard industrial gearboxes, customized high-torque gear drives, and precision gears & components for B2B industrial, aquaculture, and commercial manufacturing sectors. Combining advanced CNC tooth-grinding technology with absolute structural metrology, we supply rugged, micron-precision transmissions engineered for peak load durability.
             </p>
           </div>
 
