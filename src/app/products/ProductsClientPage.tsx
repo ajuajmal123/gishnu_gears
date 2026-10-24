@@ -16,6 +16,7 @@ interface Product {
   description: string;
   illustration?: React.ReactNode;
   image?: string;
+  models?: string[];
 }
 
 interface Series {
@@ -50,7 +51,9 @@ export default function ProductsClientPage() {
     category?: string;
     product?: string;
     specs?: string[];
+    models?: string[];
   }>({});
+  const [selectedModel, setSelectedModel] = useState<string>("");
 
   useEffect(() => {
     const catParam = searchParams.get("category");
@@ -71,13 +74,16 @@ export default function ProductsClientPage() {
           name: "B1-SERIES",
           specs: ["Heavy-duty housing", "High mechanical capability", "Optimal torque transfer"],
           description: "Industrial standard gearbox designed for seamless power transmission across manufacturing machinery.",
-          image: "/products/BO Series/B Series Sprial Bevel -1 copy.png",
+          image: "/products/B1 Series/WhatsApp Image 2026-10-24 at 12.42.12 PM.jpeg",
           products: [
-            { id: 'b1-0', name: 'GB1 - 65', specs: ['Size: 65', 'Heavy-duty housing'], description: 'GB1 model standard gearbox with size 65.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b1-1', name: 'GB1 - 90', specs: ['Size: 90', 'Heavy-duty housing'], description: 'GB1 model standard gearbox with size 90.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b1-2', name: 'GB1 - 120', specs: ['Size: 120', 'Heavy-duty housing'], description: 'GB1 model standard gearbox with size 120.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b1-3', name: 'GB1 - 140', specs: ['Size: 140', 'Heavy-duty housing'], description: 'GB1 model standard gearbox with size 140.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b1-4', name: 'GB1 - 260', specs: ['Size: 260', 'Heavy-duty housing'], description: 'GB1 model standard gearbox with size 260.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' }
+            {
+              id: 'gb1-65-260',
+              name: 'GB1 65 to 260',
+              specs: ['Size Range: 65 to 260', 'Heavy-duty housing', 'Optimal torque transfer'],
+              description: 'GB1 model standard industrial gearbox series spanning sizes 65 to 260.',
+              image: '/products/B1 Series/WhatsApp Image 2026-10-24 at 12.42.12 PM.jpeg',
+              models: ['GB1 - 65', 'GB1 - 90', 'GB1 - 120', 'GB1 - 140', 'GB1 - 260'],
+            }
           ],
         },
         {
@@ -87,24 +93,30 @@ export default function ProductsClientPage() {
           description: "Precision-machined standard gearbox optimized for smooth and reliable variable speed applications.",
           image: "/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg",
           products: [
-            { id: 'gu-0', name: 'GU - 162', specs: ['Size: 162', 'Compact footprint'], description: 'GU model standard gearbox, size 162.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-1', name: 'GU - 200', specs: ['Size: 200', 'Compact footprint'], description: 'GU model standard gearbox, size 200.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-2', name: 'GU - 237', specs: ['Size: 237', 'Compact footprint'], description: 'GU model standard gearbox, size 237.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-3', name: 'GU - 287', specs: ['Size: 287', 'Compact footprint'], description: 'GU model standard gearbox, size 287.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-4', name: 'GU - 300', specs: ['Size: 300', 'Compact footprint'], description: 'GU model standard gearbox, size 300.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-5', name: 'GU - 337', specs: ['Size: 337', 'Compact footprint'], description: 'GU model standard gearbox, size 337.', image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg' },
-            { id: 'gu-6', name: 'GU - 400', specs: ['Size: 400', 'Compact footprint'], description: 'GU model standard gearbox, size 400.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gu-7', name: 'GU - 500', specs: ['Size: 500', 'Compact footprint'], description: 'GU model standard gearbox, size 500.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gu-8', name: 'GU - 600', specs: ['Size: 600', 'Compact footprint'], description: 'GU model standard gearbox, size 600.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gu-9', name: 'GU - 700', specs: ['Size: 700', 'Compact footprint'], description: 'GU model standard gearbox, size 700.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gu-10', name: 'GU - 800', specs: ['Size: 800', 'Compact footprint'], description: 'GU model standard gearbox, size 800.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gu-11', name: 'GU - 1000', specs: ['Size: 1000', 'Compact footprint'], description: 'GU model standard gearbox, size 1000.', image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg' },
-            { id: 'gv-0', name: 'GV - 400', specs: ['Size: 400', 'Compact footprint'], description: 'GV model standard gearbox, size 400.', image: '/products/G Series/G Series GV 400 to 900.jpeg' },
-            { id: 'gv-1', name: 'GV - 500', specs: ['Size: 500', 'Compact footprint'], description: 'GV model standard gearbox, size 500.', image: '/products/G Series/G Series GV 400 to 900.jpeg' },
-            { id: 'gv-2', name: 'GV - 600', specs: ['Size: 600', 'Compact footprint'], description: 'GV model standard gearbox, size 600.', image: '/products/G Series/G Series GV 400 to 900.jpeg' },
-            { id: 'gv-3', name: 'GV - 700', specs: ['Size: 700', 'Compact footprint'], description: 'GV model standard gearbox, size 700.', image: '/products/G Series/G Series GV 400 to 900.jpeg' },
-            { id: 'gv-4', name: 'GV - 800', specs: ['Size: 800', 'Compact footprint'], description: 'GV model standard gearbox, size 800.', image: '/products/G Series/G Series GV 400 to 900.jpeg' },
-            { id: 'gv-5', name: 'GV - 900', specs: ['Size: 900', 'Compact footprint'], description: 'GV model standard gearbox, size 900.', image: '/products/G Series/G Series GV 400 to 900.jpeg' }
+            {
+              id: 'gu-162-337',
+              name: 'GU - 162 - 337',
+              specs: ['Size Range: 162 to 337', 'Compact footprint', 'High efficiency design'],
+              description: 'GU model standard industrial gearbox series spanning sizes 162 to 337.',
+              image: '/products/G Series/G Series GU 162 to 337 - 3.jpeg',
+              models: ['GU - 162', 'GU - 200', 'GU - 237', 'GU - 287', 'GU - 300', 'GU - 337'],
+            },
+            {
+              id: 'gu-400-1000',
+              name: 'GU - 400 - 1000',
+              specs: ['Size Range: 400 to 1000', 'Compact footprint', 'Low-noise operation'],
+              description: 'GU model standard industrial gearbox series spanning sizes 400 to 1000.',
+              image: '/products/G Series/WhatsApp Image 2026-10-23 at 6.21.45 PM.jpeg',
+              models: ['GU - 400', 'GU - 500', 'GU - 600', 'GU - 700', 'GU - 800', 'GU - 1000'],
+            },
+            {
+              id: 'gv-400-900',
+              name: 'GV - 400 - 900',
+              specs: ['Size Range: 400 to 900', 'Vertical mounting design', 'High efficiency'],
+              description: 'GV model standard vertical gearbox series spanning sizes 400 to 900.',
+              image: '/products/G Series/G Series GV 400 to 900.jpeg',
+              models: ['GV - 400', 'GV - 500', 'GV - 600', 'GV - 700', 'GV - 800', 'GV - 900'],
+            },
           ],
         },
         {
@@ -114,7 +126,7 @@ export default function ProductsClientPage() {
           description: "Advanced standard gearbox unit featuring superior heat management for continuous load bearing environments.",
           image: "/products/GAL Series/GAL Series GAL 40 to 90 - blue painted Powder coat.png",
           products: [
-            { id: 'gal-gmrv', name: 'GMRV 30 - 150', specs: ['Size Range: 30 - 150', 'Extended durability', 'Enhanced thermal dissipation'], description: 'GMRV model standard gearbox series spanning sizes 30 to 150.', image: '/products/GAL Series/GAL Series GAL 40 to 90 - blue painted Powder coat.png' }
+            { id: 'gal-gmrv', name: 'GMRV 30 - 150', specs: ['Size Range: 30 - 150', 'Extended durability', 'Enhanced thermal dissipation'], description: 'GMRV model standard gearbox series spanning sizes 30 to 150.', image: '/products/GAL Series/GAL Series GAL 40 to 90 - blue painted Powder coat.png', models: ['GMRV - 30', 'GMRV - 40', 'GMRV - 50', 'GMRV - 63', 'GMRV - 75', 'GMRV - 90', 'GMRV - 110', 'GMRV - 130', 'GMRV - 150'] }
           ],
         },
         {
@@ -125,7 +137,7 @@ export default function ProductsClientPage() {
           image: "/products/H Series/H Series GH 20 to 80 - rear.png",
           products: [
             { id: 'h-0', name: 'GH - 20 (ALM)', specs: ['Size: 20 (ALM)', 'Inline coaxial layout'], description: 'GH model helical speed reducer, size 20 (ALM).', image: '/products/H Series/H Series GH 20 to 80 - rear.png' },
-            { id: 'h-25-80', name: 'GH 25 - 80', specs: ['Size Range: 25 - 80', 'Inline coaxial layout'], description: 'GH model helical speed reducer series spanning sizes 25 to 80.', image: '/products/H Series/H Series GH 20 to 80 - rear.png' }
+            { id: 'h-25-80', name: 'GH 25 - 80', specs: ['Size Range: 25 - 80', 'Inline coaxial layout'], description: 'GH model helical speed reducer series spanning sizes 25 to 80.', image: '/products/H Series/H Series GH 20 to 80 - rear.png', models: ['GH - 25', 'GH - 30', 'GH - 35', 'GH - 40', 'GH - 50', 'GH - 60', 'GH - 80'] }
           ],
         },
         {
@@ -135,17 +147,52 @@ export default function ProductsClientPage() {
           description: "High-integrity gear unit built to endure harsh external environments and heavy duty cycles.",
           image: "/products/A Series/A Series A3.png",
           products: [
-            { id: 'a3h-0', name: 'A3H - 105 RPM', specs: ['RPM: 105', 'Salinity epoxy coat'], description: 'A3H model with 105 RPM.', image: '/products/A Series/A Series A3.png' },
-            { id: 'a3h-1', name: 'A3H - 115 RPM', specs: ['RPM: 115', 'Salinity epoxy coat'], description: 'A3H model with 115 RPM.', image: '/products/A Series/A Series A3.png' },
-            { id: 'a3h-2', name: 'A3H - 130 RPM', specs: ['RPM: 130', 'Salinity epoxy coat'], description: 'A3H model with 130 RPM.', image: '/products/A Series/A Series A3.png' },
-            { id: 'a3ha-0', name: 'A3HA - 105 RPM', specs: ['RPM: 105', 'Salinity epoxy coat'], description: 'A3HA model with 105 RPM.', image: '/products/A Series/A Series A3.png' },
-            { id: 'a3ha-1', name: 'A3HA - 115 RPM', specs: ['RPM: 115', 'Salinity epoxy coat'], description: 'A3HA model with 115 RPM.', image: '/products/A Series/A Series A3.png' },
-            { id: 'gbh200-0', name: 'GBH200 - 105 RPM', specs: ['RPM: 105', 'Salinity epoxy coat'], description: 'GBH200 model with 105 RPM.', image: '/products/A Series/A Series GBH 200 Gearbox.png' },
-            { id: 'gbh200-1', name: 'GBH200 - 115 RPM', specs: ['RPM: 115', 'Salinity epoxy coat'], description: 'GBH200 model with 115 RPM.', image: '/products/A Series/A Series GBH 200 Gearbox.png' },
-            { id: 'gbh300-0', name: 'GBH300 - 105* RPM', specs: ['RPM: 105*', 'Salinity epoxy coat'], description: 'GBH300 model with 105* RPM.', image: '/products/A Series/A Series GBH 200 Gearbox.png' },
-            { id: 'gbh300-1', name: 'GBH300 - 115* RPM', specs: ['RPM: 115*', 'Salinity epoxy coat'], description: 'GBH300 model with 115* RPM.', image: '/products/A Series/A Series GBH 200 Gearbox.png' },
-            { id: 'a-addn-0', name: 'A4 - 105 RPM*', specs: ['RPM: 105', 'Salinity epoxy coat'], description: 'A4 model with 105 RPM*.', image: '/products/A Series/A Series A4 Gearbox.png' },
-            { id: 'a-addn-1', name: 'A1 - 105 RPM', specs: ['RPM: 105', 'Salinity epoxy coat'], description: 'A1 model with 105 RPM.', image: '/products/A Series/A Series A1 Gearbox.png' }
+            {
+              id: 'a3h-105-130',
+              name: 'A3H 105 - 130 RPM',
+              specs: ['RPM Range: 105 - 130 RPM', 'Salinity epoxy coat', 'Dual-oil seals'],
+              description: 'A3H model standard gearbox series spanning 105 to 130 RPM.',
+              image: '/products/A Series/A Series A3.png',
+              models: ['A3H - 105 RPM', 'A3H - 115 RPM', 'A3H - 130 RPM'],
+            },
+            {
+              id: 'a3ha-105-115',
+              name: 'A3HA 105 - 115 RPM',
+              specs: ['RPM Range: 105 - 115 RPM', 'Salinity epoxy coat', 'Dual-oil seals'],
+              description: 'A3HA model standard gearbox series spanning 105 to 115 RPM.',
+              image: '/products/A Series/A Series A3.png',
+              models: ['A3HA - 105 RPM', 'A3HA - 115 RPM'],
+            },
+            {
+              id: 'gbh-200-105-115',
+              name: 'GBH 200 105 - 115 RPM',
+              specs: ['RPM Range: 105 - 115 RPM', 'Salinity epoxy coat', 'High mechanical strength'],
+              description: 'GBH 200 model standard gearbox series spanning 105 to 115 RPM.',
+              image: '/products/A Series/A Series GBH 200 Gearbox.png',
+              models: ['GBH 200 - 105 RPM', 'GBH 200 - 115 RPM'],
+            },
+            {
+              id: 'gbh-300-105-115',
+              name: 'GBH 300 105 - 115 RPM',
+              specs: ['RPM Range: 105 - 115 RPM', 'Salinity epoxy coat', 'High mechanical strength'],
+              description: 'GBH 300 model standard gearbox series spanning 105 to 115 RPM.',
+              image: '/products/A Series/A Series GBH 200 Gearbox.png',
+              models: ['GBH 300 - 105* RPM', 'GBH 300 - 115* RPM'],
+            },
+            {
+              id: 'a-addn-0',
+              name: 'A4 - 105 RPM*',
+              specs: ['RPM: 105*', 'Salinity epoxy coat'],
+              description: 'A4 model with 105 RPM*.',
+              image: '',
+            },
+            {
+              id: 'a-addn-1',
+              name: 'A1 - 105 RPM',
+              specs: ['RPM: 105', 'Salinity epoxy coat'],
+              description: 'A1 model with 105 RPM.',
+              image: '/products/A Series/A Series A1 Gearbox.png',
+            },
           ],
         },
         {
@@ -225,7 +272,6 @@ export default function ProductsClientPage() {
             { id: 'm-0', name: 'Parallel Helical', specs: ['Type: Parallel Helical', 'Custom built'], description: 'M-Series customized gearbox, Parallel Helical type.', image: '/products/M Series/m series bevel helical gearbox outlined HQ.png' },
             { id: 'm-1', name: 'Bevel Helical', specs: ['Type: Bevel Helical', 'Custom built'], description: 'M-Series customized gearbox, Bevel Helical type.', image: '/products/M Series/M Series Bevel Helical Gearbox.png' },
             { id: 'm-2', name: 'Special Worm', specs: ['Type: Special Worm', 'Custom built'], description: 'M-Series customized gearbox, Special Worm type.', image: '/products/M Series/M Series Bevel Helical Gearbox.png' },
-
           ],
         },
         {
@@ -281,22 +327,21 @@ export default function ProductsClientPage() {
           name: "J-SERIES",
           specs: ["Type: Job-Order", "Custom Specifications"],
           description: "Job-Order based gear components built to specification.",
-          image: "/products/O Series/O series spe.png",
+          image: "",
           products: [
-            { id: 'j-1', name: 'Job-Order', specs: ['Type: Job-Order', 'Build to Spec'], description: 'Custom job-order gear manufacturing.', image: '/products/O Series/O series spe.png' }
+            { id: 'j-1', name: 'Job-Order', specs: ['Type: Job-Order', 'Build to Spec'], description: 'Custom job-order gear manufacturing.', image: '' }
           ],
         },
         {
           id: "cmp-r",
           name: "R-SERIES",
-          specs: ["Applications: Industrial Automation", "High Precision"],
-          description: "Gears and components for industrial automation and specialized machinery.",
-          image: "/products/O Series/O series.png",
+          specs: ["Applications: Multi-industry", "High Precision"],
+          description: "Gears and components for specialized applications.",
+          image: "",
           products: [
-            { id: 'r-1', name: 'Industrial Machinery Applications', specs: ['Application: Industrial', 'High Precision'], description: 'Components engineered for industrial manufacturing and process plants.', image: '/products/O Series/O series.png' },
-            { id: 'r-2', name: 'Robotics & Automation Applications', specs: ['Application: Robotics', 'High Precision'], description: 'Components engineered for robotics and automated transmission systems.', image: '/products/O Series/O series.png' },
-            { id: 'r-3', name: 'Power Transmission Applications', specs: ['Application: Power Drive', 'High Precision'], description: 'Gears engineered for continuous high-torque industrial power transmission.', image: '/products/O Series/O series.png' },
-            { id: 'r-4', name: 'Material Handling Applications', specs: ['Application: Handling', 'High Precision'], description: 'Components engineered for industrial conveyors, hoists, and lifts.', image: '/products/O Series/O series.png' }
+            { id: 'r-1', name: 'Railway Applications', specs: ['Application: Railway', 'High Precision'], description: 'Components engineered for railway applications.', image: '' },
+            { id: 'r-2', name: 'Defence Applications', specs: ['Application: Defence', 'High Precision'], description: 'Components engineered for defence applications.', image: '' },
+            { id: 'r-3', name: 'Aerospace Applications', specs: ['Application: Aerospace', 'High Precision'], description: 'Components engineered for aerospace applications.', image: '' },
           ],
         },
       ],
@@ -305,11 +350,12 @@ export default function ProductsClientPage() {
 
   const activeCatData = categories.find((cat) => cat.id === activeCategory) || categories[0];
 
-  const handleInquiryClick = (productName?: string, specs?: string[]) => {
+  const handleInquiryClick = (productName?: string, specs?: string[], models?: string[]) => {
     setEnquiryModalData({
       category: activeCatData.title,
       product: productName || "",
       specs: specs || [],
+      models: models || [],
     });
     setIsEnquiryModalOpen(true);
   };
@@ -451,7 +497,10 @@ export default function ProductsClientPage() {
                       {activeSeries.products.map((prod) => (
                         <div
                           key={prod.id}
-                          onClick={() => setSelectedProduct(prod)}
+                          onClick={() => {
+                            setSelectedProduct(prod);
+                            setSelectedModel(prod.models && prod.models.length > 0 ? prod.models[0] : prod.name);
+                          }}
                           className="glass-card rounded-xl p-5 bg-white border border-slate-200 shadow-sm flex flex-col justify-between cursor-pointer hover:border-brand-gold/50 hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden h-[340px] text-left"
                         >
                           <div className="w-full h-52 flex items-center justify-center relative rounded-lg border border-slate-100 bg-slate-50/70 mb-3.5 shadow-inner overflow-hidden flex-shrink-0 p-3">
@@ -606,6 +655,35 @@ export default function ProductsClientPage() {
                   {/* Divider */}
                   <div className="border-t border-slate-100 my-4" />
 
+                  {/* Model / Size Selector for Consolidated Products */}
+                  {selectedProduct.models && selectedProduct.models.length > 0 && (
+                    <div className="mb-5 p-3.5 bg-slate-50 border border-slate-200/90 rounded-xl">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[10px] font-mono font-bold text-brand-gold uppercase tracking-wider">
+                          Select Specific Model / Size:
+                        </span>
+                        <span className="text-xs font-sora font-extrabold text-brand-navy">
+                          {selectedModel}
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {selectedProduct.models.map((m) => (
+                          <button
+                            key={m}
+                            type="button"
+                            onClick={() => setSelectedModel(m)}
+                            className={`px-3 py-1.5 text-xs font-sora font-bold rounded-lg border transition-all cursor-pointer ${selectedModel === m
+                              ? "bg-brand-navy text-white border-brand-navy shadow-xs scale-102"
+                              : "bg-white text-brand-navy/70 border-slate-200 hover:border-brand-gold hover:text-brand-navy"
+                              }`}
+                          >
+                            {m}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Tech Specs */}
                   <h4 className="text-xs sm:text-sm font-sora font-extrabold text-brand-navy mb-3">
                     Technical Specifications
@@ -626,10 +704,13 @@ export default function ProductsClientPage() {
                     variant="primary"
                     size="xs"
                     onClick={() => {
-                      const prodName = selectedProduct.name;
+                      const prodName = (selectedProduct.models && selectedProduct.models.length > 0)
+                        ? (selectedModel || selectedProduct.models[0])
+                        : selectedProduct.name;
                       const prodSpecs = selectedProduct.specs;
+                      const prodModels = selectedProduct.models;
                       setSelectedProduct(null);
-                      handleInquiryClick(prodName, prodSpecs);
+                      handleInquiryClick(prodName, prodSpecs, prodModels);
                     }}
                     className="w-auto px-6 shadow-md hover:shadow-brand-gold/15 flex items-center justify-center gap-2 cursor-pointer"
                   >
@@ -650,6 +731,7 @@ export default function ProductsClientPage() {
         initialCategory={enquiryModalData.category}
         initialProduct={enquiryModalData.product}
         initialSpecs={enquiryModalData.specs}
+        availableModels={enquiryModalData.models}
       />
 
       {/* Global Footer */}

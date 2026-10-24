@@ -11,6 +11,7 @@ export interface EnquiryModalProps {
   initialCategory?: string;
   initialProduct?: string;
   initialSpecs?: string[];
+  availableModels?: string[];
 }
 
 export default function EnquiryModal({
@@ -19,6 +20,7 @@ export default function EnquiryModal({
   initialCategory = "Standard Gearboxes",
   initialProduct = "",
   initialSpecs = [],
+  availableModels = [],
 }: EnquiryModalProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -37,18 +39,31 @@ export default function EnquiryModal({
   // Sync form when modal opens or initial props change
   useEffect(() => {
     if (isOpen) {
+      // Determine initial model selection
+      let defaultModel = initialProduct || "";
+      if (availableModels && availableModels.length > 0) {
+        if (!availableModels.includes(defaultModel)) {
+          defaultModel = availableModels[0];
+        }
+      }
+
+      const cleanedSpecs = initialSpecs ? initialSpecs.filter((s) => !s.toLowerCase().startsWith("size range:") && !s.toLowerCase().startsWith("rpm range:")) : [];
+      const specsList = availableModels && availableModels.length > 0
+        ? [`Selected Model: ${defaultModel}`, ...cleanedSpecs]
+        : (initialSpecs || []);
+
       setFormData((prev) => ({
         ...prev,
         category: initialCategory || "Standard Gearboxes",
-        product: initialProduct || "",
-        message: initialSpecs && initialSpecs.length > 0
-          ? `Inquiry for ${initialProduct}.\nSpecs:\n${initialSpecs.map((s) => `• ${s}`).join("\n")}\n\nRequired Specifications / Application Details:`
+        product: defaultModel,
+        message: specsList.length > 0
+          ? `Inquiry for ${defaultModel || initialProduct}.\nSpecs:\n${specsList.map((s) => `• ${s}`).join("\n")}\n\nRequired Specifications / Application Details:`
           : prev.message,
       }));
       setIsSuccess(false);
       setIsSubmitting(false);
     }
-  }, [isOpen, initialCategory, initialProduct, initialSpecs]);
+  }, [isOpen, initialCategory, initialProduct, initialSpecs, availableModels]);
 
   // Handle escape key
   useEffect(() => {
@@ -99,6 +114,22 @@ export default function EnquiryModal({
       message: "",
     });
     onClose();
+  };
+
+  const handleModelChange = (newModel: string) => {
+    setFormData((prev) => {
+      let updatedMessage = prev.message;
+      if (prev.product && updatedMessage.includes(prev.product)) {
+        updatedMessage = updatedMessage.replaceAll(prev.product, newModel);
+      } else if (updatedMessage.includes("Inquiry for")) {
+        updatedMessage = updatedMessage.replace(/Inquiry for [^\n\.]+/, `Inquiry for ${newModel}`);
+      }
+      return {
+        ...prev,
+        product: newModel,
+        message: updatedMessage,
+      };
+    });
   };
 
   const getCategoryIcon = (catName: string) => {
@@ -299,18 +330,60 @@ export default function EnquiryModal({
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="modal-product" className="text-[10px] font-mono text-brand-navy/70 uppercase tracking-widest font-bold flex items-center gap-1.5">
-                        <FileText className="w-3 h-3 text-brand-gold" />
-                        Product / Model Series
+                      <label htmlFor="modal-product" className="text-[10px] font-mono text-brand-navy/70 uppercase tracking-widest font-bold flex items-center justify-between">
+                        <span className="flex items-center gap-1.5">
+                          <FileText className="w-3 h-3 text-brand-gold" />
+                          {availableModels && availableModels.length > 0 ? "Select Specific Model / Size *" : "Product / Model Series"}
+                        </span>
+                        {availableModels && availableModels.length > 0 && (
+                          <span className="text-brand-gold text-[9px] font-mono font-bold uppercase">Dropdown / Selection</span>
+                        )}
                       </label>
-                      <input
-                        id="modal-product"
-                        type="text"
-                        value={formData.product}
-                        onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                        placeholder="e.g. GB1 Series, G Series, Spur Gears"
-                        className="w-full bg-slate-50/70 border border-slate-200 focus:border-brand-gold focus:bg-white rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-brand-navy placeholder-brand-navy/35 outline-none transition-all duration-200 shadow-xs"
-                      />
+
+                      {availableModels && availableModels.length > 0 ? (
+                        <>
+                          <select
+                            id="modal-product"
+                            required
+                            value={formData.product}
+                            onChange={(e) => handleModelChange(e.target.value)}
+                            className="w-full bg-slate-50/70 border border-slate-200 focus:border-brand-gold focus:bg-white rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-brand-navy outline-none transition-all duration-200 shadow-xs cursor-pointer font-bold"
+                          >
+                            {availableModels.map((m) => (
+                              <option key={m} value={m}>
+                                {m}
+                              </option>
+                            ))}
+                          </select>
+
+                          {/* Quick clickable selection chips */}
+                          <div className="flex flex-wrap gap-1.5 pt-1">
+                            {availableModels.map((m) => (
+                              <button
+                                key={m}
+                                type="button"
+                                onClick={() => handleModelChange(m)}
+                                className={`px-2.5 py-1 text-[11px] font-sora font-bold rounded-md transition-all cursor-pointer border ${
+                                  formData.product === m
+                                    ? "bg-brand-navy text-white border-brand-navy shadow-xs scale-105"
+                                    : "bg-white text-brand-navy/70 border-slate-200 hover:border-brand-gold hover:text-brand-navy"
+                                }`}
+                              >
+                                {m}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <input
+                          id="modal-product"
+                          type="text"
+                          value={formData.product}
+                          onChange={(e) => setFormData({ ...formData, product: e.target.value })}
+                          placeholder="e.g. GB1 Series, G Series, Spur Gears"
+                          className="w-full bg-slate-50/70 border border-slate-200 focus:border-brand-gold focus:bg-white rounded-lg px-3.5 py-2.5 text-xs sm:text-sm text-brand-navy placeholder-brand-navy/35 outline-none transition-all duration-200 shadow-xs"
+                        />
+                      )}
                     </div>
                   </div>
 
