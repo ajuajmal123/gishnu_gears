@@ -200,15 +200,15 @@ export default function ProductsClientPage() {
           name: "T-SERIES",
           specs: ["High-ratio capabilities", "Universal mounting options", "High overload capacity"],
           description: "Modular standard gearbox providing extreme adaptability for complex industrial transmission routing.",
-          image: "",
+          image: "/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg",
           products: [
-            { id: 't-0', name: '1 HP Motor', specs: ['Power: 1 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 1 HP.', image: '' },
-            { id: 't-1', name: '1.5 HP Motor', specs: ['Power: 1.5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 1.5 HP.', image: '' },
-            { id: 't-2', name: '2 HP Motor', specs: ['Power: 2 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 2 HP.', image: '' },
-            { id: 't-3', name: '3 HP Motor', specs: ['Power: 3 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 3 HP.', image: '' },
-            { id: 't-4', name: '5 HP Motor', specs: ['Power: 5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 5 HP.', image: '' },
-            { id: 't-5', name: '7.5 HP Motor', specs: ['Power: 7.5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 7.5 HP.', image: '' },
-            { id: 't-6', name: '10 HP Motor', specs: ['Power: 10 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 10 HP.', image: '' }
+            { id: 't-0', name: '1 HP Motor', specs: ['Power: 1 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 1 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-1', name: '1.5 HP Motor', specs: ['Power: 1.5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 1.5 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-2', name: '2 HP Motor', specs: ['Power: 2 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 2 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-3', name: '3 HP Motor', specs: ['Power: 3 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 3 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-4', name: '5 HP Motor', specs: ['Power: 5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 5 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-5', name: '7.5 HP Motor', specs: ['Power: 7.5 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 7.5 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' },
+            { id: 't-6', name: '10 HP Motor', specs: ['Power: 10 HP', 'High-ratio capabilities'], description: 'T-Series modular gearbox motor, 10 HP.', image: '/products/T Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' }
           ],
         },
         {
@@ -232,22 +232,22 @@ export default function ProductsClientPage() {
           name: "B0-SERIES",
           specs: ["Customizable ratios", "High mechanical capability"],
           description: "Customized standard gearbox designed for precision requirements.",
-          image: "/products/BO Series/B Series Sprial Bevel -1 copy.png",
+          image: "/products/BO Series/B01.png",
           products: [
-            { id: 'b0-0', name: 'B01', specs: ['Model: B01', 'Custom built'], description: 'B0-Series customized gearbox, model B01.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-1', name: 'B02*', specs: ['Model: B02*', 'Custom built'], description: 'B0-Series customized gearbox, model B02*.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-2', name: 'B03*', specs: ['Model: B03*', 'Custom built'], description: 'B0-Series customized gearbox, model B03*.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-3', name: 'B03A', specs: ['Model: B03A', 'Custom built'], description: 'B0-Series customized gearbox, model B03A.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-4', name: 'B03M', specs: ['Model: B03M', 'Custom built'], description: 'B0-Series customized gearbox, model B03M.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-5', name: 'B04*', specs: ['Model: B04*', 'Custom built'], description: 'B0-Series customized gearbox, model B04*.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-6', name: 'B04A', specs: ['Model: B04A', 'Custom built'], description: 'B0-Series customized gearbox, model B04A.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-7', name: 'B04M', specs: ['Model: B04M', 'Custom built'], description: 'B0-Series customized gearbox, model B04M.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-8', name: 'B05', specs: ['Model: B05', 'Custom built'], description: 'B0-Series customized gearbox, model B05.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-9', name: 'B05JS', specs: ['Model: B05JS', 'Custom built'], description: 'B0-Series customized gearbox, model B05JS.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-10', name: 'B06', specs: ['Model: B06', 'Custom built'], description: 'B0-Series customized gearbox, model B06.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-11', name: 'B07A', specs: ['Model: B07A', 'Custom built'], description: 'B0-Series customized gearbox, model B07A.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-12', name: 'B07M', specs: ['Model: B07M', 'Custom built'], description: 'B0-Series customized gearbox, model B07M.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' },
-            { id: 'b0-13', name: 'B08', specs: ['Model: B08', 'Custom built'], description: 'B0-Series customized gearbox, model B08.', image: '/products/BO Series/B Series Sprial Bevel -1 copy.png' }
+            { id: 'b0-0', name: 'B01', specs: ['Model: B01', 'Custom built'], description: 'B0-Series customized gearbox, model B01.', image: '/products/BO Series/B01.png' },
+            { id: 'b0-1', name: 'B02*', specs: ['Model: B02*', 'Custom built'], description: 'B0-Series customized gearbox, model B02*.', image: '/products/BO Series/B01.png' },
+            { id: 'b0-2', name: 'B03*', specs: ['Model: B03*', 'Custom built'], description: 'B0-Series customized gearbox, model B03*.', image: '/products/BO Series/B03A & M.png' },
+            { id: 'b0-3', name: 'B03A', specs: ['Model: B03A', 'Custom built'], description: 'B0-Series customized gearbox, model B03A.', image: '/products/BO Series/B03A & M.png' },
+            { id: 'b0-4', name: 'B03M', specs: ['Model: B03M', 'Custom built'], description: 'B0-Series customized gearbox, model B03M.', image: '/products/BO Series/B03A & M.png' },
+            { id: 'b0-5', name: 'B04*', specs: ['Model: B04*', 'Custom built'], description: 'B0-Series customized gearbox, model B04*.', image: '/products/BO Series/B04A & M.png' },
+            { id: 'b0-6', name: 'B04A', specs: ['Model: B04A', 'Custom built'], description: 'B0-Series customized gearbox, model B04A.', image: '/products/BO Series/B04A & M.png' },
+            { id: 'b0-7', name: 'B04M', specs: ['Model: B04M', 'Custom built'], description: 'B0-Series customized gearbox, model B04M.', image: '/products/BO Series/B04A & M.png' },
+            { id: 'b0-8', name: 'B05', specs: ['Model: B05', 'Custom built'], description: 'B0-Series customized gearbox, model B05.', image: '/products/BO Series/B05.png' },
+            { id: 'b0-9', name: 'B05JS', specs: ['Model: B05JS', 'Custom built'], description: 'B0-Series customized gearbox, model B05JS.', image: '/products/BO Series/B05.png' },
+            { id: 'b0-10', name: 'B06', specs: ['Model: B06', 'Custom built'], description: 'B0-Series customized gearbox, model B06.', image: '/products/BO Series/B06.png' },
+            { id: 'b0-11', name: 'B07A', specs: ['Model: B07A', 'Custom built'], description: 'B0-Series customized gearbox, model B07A.', image: '/products/BO Series/B07.png' },
+            { id: 'b0-12', name: 'B07M', specs: ['Model: B07M', 'Custom built'], description: 'B0-Series customized gearbox, model B07M.', image: '/products/BO Series/B07.png' },
+            { id: 'b0-13', name: 'B08', specs: ['Model: B08', 'Custom built'], description: 'B0-Series customized gearbox, model B08.', image: '/products/BO Series/B08.png' }
           ],
         },
         {
@@ -327,9 +327,9 @@ export default function ProductsClientPage() {
           name: "J-SERIES",
           specs: ["Type: Job-Order", "Custom Specifications"],
           description: "Job-Order based gear components built to specification.",
-          image: "",
+          image: "/products/J Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg",
           products: [
-            { id: 'j-1', name: 'Job-Order', specs: ['Type: Job-Order', 'Build to Spec'], description: 'Custom job-order gear manufacturing.', image: '' }
+            { id: 'j-1', name: 'Job-Order', specs: ['Type: Job-Order', 'Build to Spec'], description: 'Custom job-order gear manufacturing.', image: '/products/J Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' }
           ],
         },
         {
