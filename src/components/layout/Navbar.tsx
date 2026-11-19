@@ -75,7 +75,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-2 sm:py-2.5 shadow-sm" : "glass-nav sm:bg-transparent py-2.5 sm:py-3.5"
         }`}
     >
-      <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 flex justify-between items-center">
+      <div className="max-w-384 2xl:max-w-410 mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 flex justify-between items-center">
         {/* Logo */}
         <div
           onClick={onBackToPortal}
@@ -92,7 +92,11 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
               key={item.name}
               href={item.href}
               onClick={(e) => handleScrollTo(e, item.href)}
-              className="text-xs font-semibold text-brand-navy/80 hover:text-brand-gold tracking-widest transition-colors duration-200 uppercase"
+              aria-current={pathname === item.href ? "page" : undefined}
+              className={`text-xs font-semibold hover:text-brand-gold tracking-widest transition-colors duration-200 uppercase ${pathname === item.href
+                ? "text-brand-gold underline underline-offset-[6px] decoration-2"
+                : "text-brand-navy/80"
+                }`}
             >
               {item.name}
             </a>
@@ -127,7 +131,9 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleScrollTo(e, item.href)}
-                  className="text-sm font-bold text-brand-navy/80 hover:text-brand-gold uppercase tracking-wider pl-2 py-1 transition-colors duration-150"
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`text-sm font-bold hover:text-brand-gold uppercase tracking-wider pl-2 py-1 transition-colors duration-150 ${pathname === item.href ? "text-brand-gold" : "text-brand-navy/80"
+                    }`}
                 >
                   {item.name}
                 </a>
