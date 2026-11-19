@@ -4,125 +4,168 @@ import React, { useState } from "react";
 
 interface LocationData {
   id: string;
+  label: string;
   name: string;
   address: string;
+  /** Google rating as shown on the listing. */
   rating: string;
-  reviews: string;
   landmark?: string;
-  mapY: string; // vertical percentage position of the pin on mockup
-  mapX: string; // horizontal percentage position of the pin on mockup
+  /** Coordinates of the business's Google Maps listing (used to place the pin). */
+  lat: number;
+  lng: number;
+  /** The business's Google Maps listing page. */
+  mapsUrl: string;
 }
 
 const locations: LocationData[] = [
   {
     id: "gishnu",
+    label: "Gishnu Gears HQ",
     name: "Gishnu Gears (P) Ltd",
     address: "Door No.3, S.F.NO.796, Avinashi Rd, Neelambur, Coimbatore, Tamil Nadu 641062",
     landmark: "Near Hotel Le Meridien, Cexus Nagar",
-    rating: "4.4",
-    reviews: "34",
-    mapY: "48%",
-    mapX: "48%"
+    rating: "4.3",
+    lat: 11.0593088,
+    lng: 77.079366,
+    mapsUrl:
+      "https://www.google.com/maps/place/Gishnu+Gears+(P)+Ltd/@11.0593088,77.0767911,17z/data=!4m7!3m6!1s0x3ba857dddc0e2ea1:0x346c356b8f0802d5!4b1!8m2!3d11.0593088!4d77.079366!16s%2Fg%2F11b5wnl1gq?entry=ttu&g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     id: "mmgears",
-    name: "M.M Gears Pvt Ltd",
-    address: "1/285, Mudalipalayam Rd, PO, Velayutham Nagar, Arasur, Tamil Nadu 641407",
-    landmark: "Coimbatore Industrial Sector",
-    rating: "4.0",
-    reviews: "12",
-    mapY: "42%",
-    mapX: "56%"
-  }
+    label: "MM Gears",
+    name: "MM Gears (P) Ltd",
+    address: "Avinashi Road, Cexus Nagar, Neelambur, Coimbatore, Tamil Nadu 641062",
+    landmark: "Opp. to Decathlon Sports, Cexus Nagar",
+    rating: "3.7",
+    lat: 11.0589047,
+    lng: 77.0793557,
+    mapsUrl:
+      "https://www.google.com/maps/place/MM+Gears+(P)+Ltd/@11.0589047,77.0744848,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba8ff52ae39da15:0x45835da040907618!8m2!3d11.0589047!4d77.0793557!16s%2Fg%2F11c5fyykz2?entry=ttu&g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D",
+  },
 ];
 
-export default function MapPlaceholder({ className = "h-[400px]" }: { className?: string }) {
+/**
+ * The iframe extends this many px above the visible area. Google draws its place card
+ * ("Open in Maps" / "Place info couldn't load") in the top-left corner, so this keeps it
+ * permanently out of view while the logo, terms and zoom controls at the bottom stay visible.
+ */
+const HIDDEN_TOP = 220;
+
+/** Keyless Google Maps embed (no API key), pinned by coordinates — text search doesn't resolve the Gishnu listing reliably. */
+const embedUrl = (loc: LocationData) => `https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=18&output=embed`;
+
+export default function MapPlaceholder({ className = "h-100" }: { className?: string }) {
   const [activeLoc, setActiveLoc] = useState<LocationData>(locations[0]);
+  // Static until clicked: keeps our name tag aligned with Google's pin and stops the map hijacking page scroll.
+  const [interactive, setInteractive] = useState(false);
+  const [mapKey, setMapKey] = useState(0);
+
+  const selectLocation = (loc: LocationData) => {
+    setActiveLoc(loc);
+    setInteractive(false);
+  };
+
+  const resetMap = () => {
+    setInteractive(false);
+    setMapKey((k) => k + 1);
+  };
 
   return (
-    <div className={`relative glass-card w-full rounded-xl overflow-hidden flex flex-col bg-white border border-slate-200 shadow-sm ${className}`}>
-      
-      {/* Real Styled Coimbatore Map Image Background */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        <img
-          src="/coimbatore_map_route.png"
-          alt="Coimbatore Region Highway Map"
-          className="w-full h-full object-cover select-none"
-        />
-        {/* Subtle overlay for premium visual balance */}
-        <div className="absolute inset-0 bg-slate-900/5 backdrop-blur-[0.5px]" />
-      </div>
+    <div className={`relative glass-card w-full rounded-xl overflow-hidden flex flex-col bg-slate-100 border border-slate-200 shadow-sm ${className}`}>
+      {/* Google Map (pin sits at the iframe centre = (visible height - HIDDEN_TOP) / 2) */}
+      <iframe
+        key={`${activeLoc.id}-${mapKey}`}
+        src={embedUrl(activeLoc)}
+        title={`Google Map showing ${activeLoc.name}`}
+        className="absolute left-0 w-full border-0 z-0"
+        style={{ top: -HIDDEN_TOP, height: `calc(100% + ${HIDDEN_TOP}px)` }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        allowFullScreen
+      />
 
-      {/* Sleek Switch for Locations */}
-      <div className="absolute top-4 left-4 z-20 flex bg-white/95 backdrop-blur-sm p-1 rounded-lg border border-slate-200 shadow-sm max-w-[calc(100%-40px)]">
-        {locations.map((loc) => (
-          <button
-            key={loc.id}
-            onClick={() => setActiveLoc(loc)}
-            className={`px-3 py-1.5 rounded-md text-[10px] font-sora font-extrabold transition-all duration-200 cursor-pointer ${
-              activeLoc.id === loc.id
-                ? "bg-brand-gold text-white shadow-sm"
-                : "text-brand-navy/70 hover:text-brand-gold"
-            }`}
-          >
-            {loc.id === "gishnu" ? "Gishnu Gears HQ" : "M.M Gears Facility"}
-          </button>
-        ))}
-      </div>
-
-      {/* Location Pins */}
-      {locations.map((loc) => {
-        const isActive = activeLoc.id === loc.id;
-        return (
+      {!interactive && (
+        <>
+          {/* Name tag next to the pin */}
           <div
-            key={loc.id}
-            onClick={() => setActiveLoc(loc)}
-            style={{ top: loc.mapY, left: loc.mapX }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 cursor-pointer group"
+            className="absolute z-10 pointer-events-none"
+            style={{ left: "calc(50% + 16px)", top: `calc(50% - ${HIDDEN_TOP / 2}px - 22px)` }}
           >
-            {/* Animated Pin Ring */}
-            <div className={`relative flex items-center justify-center transition-all duration-300 ${isActive ? "scale-110" : "hover:scale-105"}`}>
-              {isActive && (
-                <span className="absolute inline-flex h-7 w-7 rounded-full bg-brand-gold/30 animate-ping" />
-              )}
-              <div className={`w-4.5 h-4.5 rounded-full border-[3px] border-white shadow-md transition-all duration-300 ${
-                isActive ? "bg-brand-gold" : "bg-brand-navy/40 group-hover:bg-brand-gold/60"
-              }`} />
-            </div>
-          </div>
-        );
-      })}
-
-      {/* Active Pin Detail Card Card Overlay */}
-      <div className="absolute bottom-4 left-4 right-4 z-10 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200/60 max-w-[340px] text-left mx-auto sm:mx-0">
-        <div className="flex justify-between items-start gap-3">
-          <div>
-            <h4 className="text-brand-navy text-sm font-extrabold font-sora leading-tight">
+            <span className="block -translate-y-1/2 whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-xs font-extrabold text-brand-navy shadow-md border border-slate-200">
               {activeLoc.name}
-            </h4>
+            </span>
           </div>
-          
-          {/* Rating Badge */}
-          <div className="flex items-center gap-1 bg-amber-500/5 border border-amber-500/20 px-2 py-0.5 rounded-lg text-amber-600 flex-shrink-0">
+
+          {/* Click-to-interact layer */}
+          <button
+            type="button"
+            onClick={() => setInteractive(true)}
+            className="absolute inset-0 z-5 cursor-pointer bg-transparent group"
+            aria-label="Click to explore the map"
+          >
+            <span className="absolute top-3 right-3 rounded-md bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-navy/70 shadow-sm opacity-80 group-hover:opacity-100 transition-opacity">
+              Click to explore map
+            </span>
+          </button>
+        </>
+      )}
+
+      {/* Location card */}
+      <div className="absolute bottom-7 left-3 right-3 z-20 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200/60 max-w-85 text-left mx-auto sm:mx-0">
+        <div className="flex bg-slate-100 p-1 rounded-lg mb-3" role="tablist">
+          {locations.map((loc) => (
+            <button
+              key={loc.id}
+              role="tab"
+              aria-selected={activeLoc.id === loc.id}
+              onClick={() => selectLocation(loc)}
+              className={`flex-1 px-2 py-1.5 rounded-md text-[10px] font-sora font-extrabold transition-all duration-200 cursor-pointer ${
+                activeLoc.id === loc.id ? "bg-brand-gold text-white shadow-sm" : "text-brand-navy/70 hover:text-brand-gold"
+              }`}
+            >
+              {loc.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex justify-between items-start gap-3">
+          <h4 className="text-brand-navy text-sm font-extrabold font-sora leading-tight">{activeLoc.name}</h4>
+          <div className="flex items-center gap-1 bg-amber-500/5 border border-amber-500/20 px-2 py-0.5 rounded-lg text-amber-600 shrink-0">
             <span className="text-[10px] font-bold font-sora">{activeLoc.rating}</span>
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" stroke="none">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" stroke="none" aria-hidden>
               <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
             </svg>
-            <span className="text-[9px] text-brand-navy/50 font-bold">({activeLoc.reviews})</span>
           </div>
         </div>
 
-        <p className="text-[11px] text-brand-navy/70 leading-relaxed mt-2 font-sans font-medium">
-          {activeLoc.address}
-        </p>
-        
+        <p className="text-[11px] text-brand-navy/70 leading-relaxed mt-2 font-sans font-medium">{activeLoc.address}</p>
+
         {activeLoc.landmark && (
           <p className="text-[10px] text-brand-navy/55 leading-snug mt-1.5 font-sans font-semibold italic">
             * {activeLoc.landmark}
           </p>
         )}
+
+        <div className="mt-3 flex items-center justify-between gap-3">
+          <a
+            href={activeLoc.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-bold uppercase tracking-wider text-brand-gold hover:text-brand-navy transition-colors"
+          >
+            Open in Google Maps →
+          </a>
+          {interactive && (
+            <button
+              type="button"
+              onClick={resetMap}
+              className="text-[10px] font-bold uppercase tracking-wider text-brand-navy/60 hover:text-brand-gold transition-colors cursor-pointer"
+            >
+              Reset map
+            </button>
+          )}
+        </div>
       </div>
-      
     </div>
   );
 }
