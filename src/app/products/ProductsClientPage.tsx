@@ -235,11 +235,9 @@ export default function ProductsClientPage() {
           image: "/products/BO Series/B01.png",
           products: [
             { id: 'b0-0', name: 'B01', specs: ['Model: B01', 'Custom built'], description: 'B0-Series customized gearbox, model B01.', image: '/products/BO Series/B01.png' },
-            { id: 'b0-1', name: 'B02*', specs: ['Model: B02*', 'Custom built'], description: 'B0-Series customized gearbox, model B02*.', image: '/products/BO Series/B01.png' },
-            { id: 'b0-2', name: 'B03*', specs: ['Model: B03*', 'Custom built'], description: 'B0-Series customized gearbox, model B03*.', image: '/products/BO Series/B03A & M.png' },
+            { id: 'b0-1', name: 'B02', specs: ['Model: B02', 'Custom built'], description: 'B0-Series customized gearbox, model B02.', image: '/products/BO Series/B01.png' },
             { id: 'b0-3', name: 'B03A', specs: ['Model: B03A', 'Custom built'], description: 'B0-Series customized gearbox, model B03A.', image: '/products/BO Series/B03A & M.png' },
             { id: 'b0-4', name: 'B03M', specs: ['Model: B03M', 'Custom built'], description: 'B0-Series customized gearbox, model B03M.', image: '/products/BO Series/B03A & M.png' },
-            { id: 'b0-5', name: 'B04*', specs: ['Model: B04*', 'Custom built'], description: 'B0-Series customized gearbox, model B04*.', image: '/products/BO Series/B04A & M.png' },
             { id: 'b0-6', name: 'B04A', specs: ['Model: B04A', 'Custom built'], description: 'B0-Series customized gearbox, model B04A.', image: '/products/BO Series/B04A & M.png' },
             { id: 'b0-7', name: 'B04M', specs: ['Model: B04M', 'Custom built'], description: 'B0-Series customized gearbox, model B04M.', image: '/products/BO Series/B04A & M.png' },
             { id: 'b0-8', name: 'B05', specs: ['Model: B05', 'Custom built'], description: 'B0-Series customized gearbox, model B05.', image: '/products/BO Series/B05.png' },
@@ -279,9 +277,9 @@ export default function ProductsClientPage() {
           name: "MSO-SERIES",
           specs: ["Service division", "Retrofits & Overhauls"],
           description: "Maintenance, Service & Overhaul of transmission units.",
-          image: "",
+          image: "/products/MSO Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg",
           products: [
-            { id: 'mso-1', name: 'Maintenance, Service & Overhaul', specs: ['Service: Maintenance', 'Component Overhaul'], description: 'Complete maintenance, service, and overhaul solutions.', image: '' }
+            { id: 'mso-1', name: 'Maintenance, Service & Overhaul', specs: ['Service: Maintenance', 'Component Overhaul'], description: 'Complete maintenance, service, and overhaul solutions.', image: '/products/MSO Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' }
           ],
         },
       ],
@@ -327,9 +325,12 @@ export default function ProductsClientPage() {
           name: "J-SERIES",
           specs: ["Type: Job-Order", "Custom Specifications"],
           description: "Job-Order based gear components built to specification.",
-          image: "/products/J Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg",
+          image: "/products/J Series/Spur Gear Spare Set.png",
           products: [
-            { id: 'j-1', name: 'Job-Order', specs: ['Type: Job-Order', 'Build to Spec'], description: 'Custom job-order gear manufacturing.', image: '/products/J Series/WhatsApp Image 2026-11-05 at 11.10.40 AM.jpeg' }
+            { id: 'j-1', name: 'Spur Gear Spare Set', specs: ['Type: Spur Gear', 'Job-Order / Custom Spec'], description: 'High-precision spur gear sets manufactured to custom job-order specifications.', image: '/products/J Series/Spur Gear Spare Set.png' },
+            { id: 'j-2', name: 'Helical Gear Spare Set', specs: ['Type: Helical Gear', 'Job-Order / Custom Spec'], description: 'Smooth, high-load helical gear sets engineered to tight backlash standards.', image: '/products/J Series/Helica Gear Spare Set.png' },
+            { id: 'j-3', name: 'Spiral Bevel Spare Set', specs: ['Type: Spiral Bevel', 'Job-Order / Custom Spec'], description: 'Custom-cut spiral bevel gear sets for right-angle industrial torque transmission.', image: '/products/J Series/Sprial Bevel Spare Set.png' },
+            { id: 'j-4', name: 'Worm Shaft', specs: ['Type: Worm Shaft', 'Job-Order / Custom Spec'], description: 'Precision-ground worm shafts engineered for smooth motion and high gear reduction.', image: '/products/J Series/Worm Shaft.png' }
           ],
         },
         {
@@ -337,11 +338,11 @@ export default function ProductsClientPage() {
           name: "R-SERIES",
           specs: ["Applications: Multi-industry", "High Precision"],
           description: "Gears and components for specialized applications.",
-          image: "",
+          image: "/products/R Series/railway gearbox .png",
           products: [
-            { id: 'r-1', name: 'Railway Applications', specs: ['Application: Railway', 'High Precision'], description: 'Components engineered for railway applications.', image: '' },
-            { id: 'r-2', name: 'Defence Applications', specs: ['Application: Defence', 'High Precision'], description: 'Components engineered for defence applications.', image: '' },
-            { id: 'r-3', name: 'Aerospace Applications', specs: ['Application: Aerospace', 'High Precision'], description: 'Components engineered for aerospace applications.', image: '' },
+            { id: 'r-1', name: 'Railway Applications', specs: ['Application: Railway', 'High Precision'], description: 'Transmission components and gear units engineered for railway applications.', image: '/products/R Series/railway gearbox .png' },
+            { id: 'r-2', name: 'Defence Applications', specs: ['Application: Defence', 'High Precision'], description: 'Robust, battle-grade transmission units engineered for defence applications.', image: '/products/R Series/Defence Gearbox.png' },
+            { id: 'r-3', name: 'Aerospace Applications', specs: ['Application: Aerospace', 'High Precision'], description: 'Ultra-precision lightweight gearboxes engineered for aerospace applications.', image: '/products/R Series/Aerospace gearbox .png' },
           ],
         },
       ],

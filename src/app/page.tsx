@@ -30,6 +30,7 @@ import Button from "@/components/ui/Button";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import About from "@/components/sections/About";
+import Products from "@/components/sections/Products";
 import Team from "@/components/sections/Team";
 import Certifications from "@/components/sections/Certifications";
 import Contact from "@/components/sections/Contact";
@@ -48,6 +49,16 @@ export default function Home() {
   const handleBackToPortal = () => {
     setActivePortal("portal");
     window.scrollTo({ top: 0 });
+  };
+
+  const handleNavigateSection = (sectionId: string) => {
+    setActivePortal("gearboxes");
+    setTimeout(() => {
+      const el = document.querySelector(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 150);
   };
 
   const portals = [
@@ -110,15 +121,39 @@ export default function Home() {
             className="fixed inset-0 z-40 bg-white overflow-y-auto w-full"
           >
             {/* Main Portal Content Area */}
-            <div className="flex flex-col items-center justify-between min-h-[90vh] py-12 lg:py-16 px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 max-w-[1536px] 2xl:max-w-[1640px] mx-auto w-full">
+            <div className="flex flex-col items-center justify-between min-h-[90vh] py-6 sm:py-8 lg:py-10 px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 max-w-[1536px] 2xl:max-w-[1640px] mx-auto w-full">
               {/* Top Logo Area */}
               <motion.div
                 initial={{ y: -15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="relative z-10 flex flex-col items-center gap-1 mt-4"
+                className="relative z-10 flex flex-col items-center gap-3 sm:gap-3.5 mt-1 sm:mt-2"
               >
-                <Logo className="h-20 md:h-24" showSubtitle={true} />
+                <Logo className="h-16 sm:h-20 md:h-24 lg:h-28" showSubtitle={true} />
+
+                {/* Direct Landing Page Navigation Links - Guaranteed 1 Line on Mobile */}
+                <div className="flex items-center justify-center flex-nowrap gap-1.5 xs:gap-2 sm:gap-4 md:gap-6 pt-1 sm:pt-1.5 w-full max-w-md mx-auto">
+                  <button
+                    onClick={() => handleNavigateSection("#about")}
+                    className="whitespace-nowrap text-[11px] xs:text-xs sm:text-sm font-sora font-bold text-brand-navy/80 hover:text-brand-gold tracking-tight sm:tracking-wider uppercase px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg hover:bg-slate-50 transition-all cursor-pointer"
+                  >
+                    About Us
+                  </button>
+                  <span className="text-slate-300 text-[10px] sm:text-xs select-none shrink-0">•</span>
+                  <button
+                    onClick={() => router.push("/infrastructure")}
+                    className="whitespace-nowrap text-[11px] xs:text-xs sm:text-sm font-sora font-bold text-brand-navy/80 hover:text-brand-gold tracking-tight sm:tracking-wider uppercase px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg hover:bg-slate-50 transition-all cursor-pointer"
+                  >
+                    Infrastructure
+                  </button>
+                  <span className="text-slate-300 text-[10px] sm:text-xs select-none shrink-0">•</span>
+                  <button
+                    onClick={() => handleNavigateSection("#contact")}
+                    className="whitespace-nowrap text-[11px] xs:text-xs sm:text-sm font-sora font-bold text-brand-navy/80 hover:text-brand-gold tracking-tight sm:tracking-wider uppercase px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg hover:bg-slate-50 transition-all cursor-pointer"
+                  >
+                    Contact Us
+                  </button>
+                </div>
               </motion.div>
 
               {/* Central Portal Cards - Redesigned 3-Column Layout with Premium Images */}
@@ -236,8 +271,7 @@ export default function Home() {
 
           {/* Page Sections */}
           <About />
-          {/* <Certifications /> */}
-          {/*   <Team /> */}
+          <Products />
           <Contact />
 
           {/* Footer */}

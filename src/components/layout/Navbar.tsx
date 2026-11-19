@@ -30,16 +30,25 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
   }, []);
 
   const navItems = [
-    { name: "Products", href: "#products" },
     { name: "About Us", href: "#about" },
+    { name: "Products", href: "#products" },
+    { name: "Infrastructure", href: "/infrastructure" },
     { name: "Contact Us", href: "#contact" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    if (pathname === "/products") {
-      if (href === "#products") {
+
+    if (href === "/infrastructure") {
+      router.push("/infrastructure");
+      return;
+    }
+
+    if (pathname === "/infrastructure" || pathname === "/products") {
+      if (href === "#products" && pathname !== "/products") {
+        router.push("/products");
+      } else if (href === "#products" && pathname === "/products") {
         router.push("/?portal=true");
       } else {
         router.push("/?portal=false" + href);
@@ -63,7 +72,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3 sm:py-4 shadow-sm" : "glass-nav sm:bg-transparent py-3 sm:py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-2 sm:py-2.5 shadow-sm" : "glass-nav sm:bg-transparent py-2.5 sm:py-3.5"
         }`}
     >
       <div className="max-w-[1536px] 2xl:max-w-[1640px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 2xl:px-16 flex justify-between items-center">
@@ -73,7 +82,7 @@ export default function Navbar({ onBackToPortal }: NavbarProps) {
           className="cursor-pointer group flex items-center gap-2"
           title="Return to Portal Selection"
         >
-          <Logo className="h-12 sm:h-14 md:h-16" showSubtitle={false} />
+          <Logo className="h-10 sm:h-11 md:h-12" showSubtitle={false} />
         </div>
 
         {/* Desktop Links - Steel Navy */}

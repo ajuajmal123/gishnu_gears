@@ -5,7 +5,7 @@ interface LogoProps {
   showSubtitle?: boolean; // Maintained for API compatibility
 }
 
-export default function Logo({ className = "h-12", showSubtitle = true }: LogoProps) {
+export default function Logo({ className = "h-10 sm:h-12", showSubtitle = true }: LogoProps) {
   return (
     <div className={`relative flex items-center select-none ${className}`}>
       <img

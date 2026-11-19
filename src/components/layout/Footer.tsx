@@ -24,14 +24,15 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
   ];
 
   const navLinks = [
-    { name: "Products Showcase", href: "#products" },
     { name: "About Gishnu", href: "#about" },
+    { name: "Products Showcase", href: "#products" },
+    { name: "Infrastructure & Plant", href: "/infrastructure" },
     { name: "Contact & Facilities", href: "#contact" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (href.startsWith("/products")) {
+    if (href === "/infrastructure" || href.startsWith("/products")) {
       router.push(href);
       return;
     }
@@ -76,7 +77,7 @@ export default function Footer({ onBackToPortal, activePortal, onEnterGearboxes 
 
           {/* Column 1: Brand Info & Accreditations (lg:col-span-4) */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-4 flex flex-col items-start gap-4 text-left">
-            <Logo className="h-16 sm:h-20" showSubtitle={false} />
+            <Logo className="h-10 sm:h-12 md:h-14" showSubtitle={false} />
             <span className="text-[10px] font-sans font-bold tracking-[0.45em] text-brand-navy/80 uppercase mt-0.5 block">
               Transforming Innovation &bull; Since 1995
             </span>
