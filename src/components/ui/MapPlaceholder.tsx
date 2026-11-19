@@ -128,15 +128,7 @@ export default function MapPlaceholder({ className = "h-100" }: { className?: st
           ))}
         </div>
 
-        <div className="flex justify-between items-start gap-3">
-          <h4 className="text-brand-navy text-sm font-extrabold font-sora leading-tight">{activeLoc.name}</h4>
-          <div className="flex items-center gap-1 bg-amber-500/5 border border-amber-500/20 px-2 py-0.5 rounded-lg text-amber-600 shrink-0">
-            <span className="text-[10px] font-bold font-sora">{activeLoc.rating}</span>
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" stroke="none" aria-hidden>
-              <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
-            </svg>
-          </div>
-        </div>
+        <h4 className="text-brand-navy text-sm font-extrabold font-sora leading-tight">{activeLoc.name}</h4>
 
         <p className="text-[11px] text-brand-navy/70 leading-relaxed mt-2 font-sans font-medium">{activeLoc.address}</p>
 
