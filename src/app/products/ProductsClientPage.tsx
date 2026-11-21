@@ -184,7 +184,7 @@ export default function ProductsClientPage() {
               name: 'A4 - 105 RPM*',
               specs: ['RPM: 105*', 'Salinity epoxy coat'],
               description: 'A4 model with 105 RPM*.',
-              image: '',
+              image: '/products/A Series/A4-105 RPM.jpeg',
             },
             {
               id: 'a-addn-1',
@@ -235,7 +235,7 @@ export default function ProductsClientPage() {
           image: "/products/BO Series/B01.png",
           products: [
             { id: 'b0-0', name: 'B01', specs: ['Model: B01', 'Custom built'], description: 'B0-Series customized gearbox, model B01.', image: '/products/BO Series/B01.png' },
-            { id: 'b0-1', name: 'B02', specs: ['Model: B02', 'Custom built'], description: 'B0-Series customized gearbox, model B02.', image: '/products/BO Series/B01.png' },
+            { id: 'b0-1', name: 'B02', specs: ['Model: B02', 'Custom built'], description: 'B0-Series customized gearbox, model B02.', image: '/products/BO Series/B02.jpeg' },
             { id: 'b0-3', name: 'B03A', specs: ['Model: B03A', 'Custom built'], description: 'B0-Series customized gearbox, model B03A.', image: '/products/BO Series/B03A & M.png' },
             { id: 'b0-4', name: 'B03M', specs: ['Model: B03M', 'Custom built'], description: 'B0-Series customized gearbox, model B03M.', image: '/products/BO Series/B03A & M.png' },
             { id: 'b0-6', name: 'B04A', specs: ['Model: B04A', 'Custom built'], description: 'B0-Series customized gearbox, model B04A.', image: '/products/BO Series/B04A & M.png' },
